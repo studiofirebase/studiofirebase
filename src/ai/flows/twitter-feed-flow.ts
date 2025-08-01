@@ -64,6 +64,11 @@ const fetchTwitterMediaFlow = ai.defineFlow(
     if (!bearerToken || bearerToken === 'YOUR_TWITTER_BEARER_TOKEN') {
       const errorMsg = "A credencial TWITTER_BEARER_TOKEN não está configurada no ambiente do servidor.";
       console.warn(errorMsg);
+      // Se houver cache antigo, retorne-o em vez de lançar um erro.
+      if (cachedEntry) {
+        console.warn("Retornando cache antigo devido à falta de credenciais.");
+        return cachedEntry.data;
+      }
       throw new Error(errorMsg);
     }
 
@@ -150,11 +155,13 @@ const fetchTwitterMediaFlow = ai.defineFlow(
 
     } catch (error: any) {
         console.error(`Erro no fluxo ao buscar feed do Twitter para ${username}:`, error);
+        // Se a busca falhar (ex: limite de taxa), retorne os dados do cache, mesmo que expirados.
         const cachedEntryOnError = cache.get(username);
         if (cachedEntryOnError) {
             console.warn("Falha ao buscar novos dados do Twitter, retornando cache antigo.");
             return cachedEntryOnError.data;
         }
+        // Se não houver cache, aí sim lançamos o erro.
         const errorMessage = error.message || "Erro desconhecido ao acessar a API do Twitter.";
         throw new Error(`Não foi possível carregar o feed do Twitter. Motivo: ${errorMessage}`);
     }
