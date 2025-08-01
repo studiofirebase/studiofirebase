@@ -4,13 +4,10 @@ import Image from "next/image";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 interface ContentCardProps {
   content: Content;
@@ -20,30 +17,24 @@ interface ContentCardProps {
 export function ContentCard({ content, priority = false }: ContentCardProps) {
   return (
     <Card className="flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-xl h-full">
-      <Link href={`/content/${content.id}`} className="flex flex-col h-full">
+      <Link href={`/content/${content.id}`} className="flex flex-col h-full group">
         <CardHeader className="p-0">
           <div className="relative aspect-video">
             <Image
               src={content.image}
               alt={content.title}
               fill
-              className="object-cover"
+              className="object-cover transition-transform group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={priority}
               data-ai-hint={`hamburguer ${content.category}`}
             />
           </div>
         </CardHeader>
-        <CardContent className="flex-grow p-4 md:p-6">
-          <Badge variant="secondary" className="mb-2">{content.category}</Badge>
-          <CardTitle className="font-headline text-lg md:text-xl mb-2 leading-tight">
-            {content.title}
-          </CardTitle>
-          <CardDescription className="text-sm line-clamp-3">
-            {content.description}
-          </CardDescription>
+        <CardContent className="flex-grow p-4">
+            {/* Content removed as requested */}
         </CardContent>
-        <CardFooter className="p-4 md:p-6 pt-0 mt-auto flex justify-end">
+        <CardFooter className="p-4 pt-0 mt-auto flex justify-end">
             <Button variant="outline" size="sm" asChild>
                 <span className="z-10">Ver Detalhes</span>
             </Button>
