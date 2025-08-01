@@ -10,3 +10,4 @@ import '@/ai/flows/facebook-products-flow.ts';
 import '@/ai/flows/instagram-feed-flow.ts';
 import '@/ai/flows/instagram-shop-flow.ts';
 import '@/ai/flows/admin-config-flow.ts';
+import '@/ai/flows/upload-flow.ts';

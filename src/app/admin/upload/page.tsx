@@ -4,27 +4,35 @@
 import { useState, useCallback } from 'react';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft, UploadCloud, FileImage, Video, X, Loader2 } from "lucide-react";
+import { ArrowLeft, UploadCloud, FileImage, Video, X, Loader2, CheckCircle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { useDropzone } from 'react-dropzone';
 import { Progress } from '@/components/ui/progress';
+import { useToast } from '@/hooks/use-toast';
+import { uploadMediaClient } from '@/ai/flows/upload-flow';
+import Image from 'next/image';
 
 interface UploadableFile {
   file: File;
   id: string;
   progress: number;
+  status: 'pending' | 'uploading' | 'success' | 'error';
   preview: string;
+  error?: string;
 }
 
 export default function UploadPage() {
   const [imageFiles, setImageFiles] = useState<UploadableFile[]>([]);
   const [videoFiles, setVideoFiles] = useState<UploadableFile[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const { toast } = useToast();
 
   const onDrop = useCallback((acceptedFiles: File[], target: 'image' | 'video') => {
     const newFiles = acceptedFiles.map(file => ({
       file,
       id: `${file.name}-${file.lastModified}`,
       progress: 0,
+      status: 'pending' as const,
       preview: URL.createObjectURL(file)
     }));
 
@@ -37,33 +45,70 @@ export default function UploadPage() {
 
   const { getRootProps: getImageRootProps, getInputProps: getImageInputProps, isDragActive: isImageDragActive } = useDropzone({
     onDrop: (files) => onDrop(files, 'image'),
-    accept: { 'image/*': ['.jpeg', '.png', '.gif'] }
+    accept: { 'image/*': ['.jpeg', '.png', '.gif', '.webp'] }
   });
 
   const { getRootProps: getVideoRootProps, getInputProps: getVideoInputProps, isDragActive: isVideoDragActive } = useDropzone({
     onDrop: (files) => onDrop(files, 'video'),
-    accept: { 'video/*': ['.mp4', '.mov'] }
+    accept: { 'video/*': ['.mp4', '.mov', '.webm'] }
   });
+  
+  const fileToBase64 = (file: File): Promise<string> => {
+      return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = (error) => reject(error);
+      });
+  };
 
-  const handleUpload = (target: 'image' | 'video') => {
+  const handleUpload = async (target: 'image' | 'video') => {
     const filesToUpload = target === 'image' ? imageFiles : videoFiles;
     const setFiles = target === 'image' ? setImageFiles : setVideoFiles;
+    
+    const pendingFiles = filesToUpload.filter(f => f.status === 'pending');
+    if (pendingFiles.length === 0) return;
+    
+    setIsUploading(true);
 
-    filesToUpload.forEach(uploadableFile => {
-      // Simulate upload progress
-      const interval = setInterval(() => {
-        setFiles(prevFiles => prevFiles.map(f => {
-          if (f.id === uploadableFile.id && f.progress < 100) {
-            return { ...f, progress: f.progress + 10 };
-          }
-          return f;
-        }));
-      }, 200);
+    for (const uploadableFile of pendingFiles) {
+      setFiles(prev => prev.map(f => f.id === uploadableFile.id ? { ...f, status: 'uploading', progress: 10 } : f));
       
-      setTimeout(() => {
-        clearInterval(interval);
-         setFiles(prevFiles => prevFiles.map(f => f.id === uploadableFile.id ? { ...f, progress: 100 } : f));
-      }, 2200);
+      try {
+        const fileBase64 = await fileToBase64(uploadableFile.file);
+        
+        // Simulate progress while uploading
+        const progressInterval = setInterval(() => {
+            setFiles(prev => prev.map(f => {
+                if (f.id === uploadableFile.id && f.progress < 80) {
+                    return {...f, progress: f.progress + 15};
+                }
+                return f;
+            }));
+        }, 300);
+
+        const result = await uploadMediaClient({
+          fileBase64,
+          fileName: uploadableFile.file.name,
+          category: target
+        });
+        
+        clearInterval(progressInterval);
+
+        if (result.success) {
+            setFiles(prev => prev.map(f => f.id === uploadableFile.id ? { ...f, status: 'success', progress: 100 } : f));
+        } else {
+            throw new Error(result.error || 'Unknown upload error');
+        }
+      } catch (error: any) {
+        setFiles(prev => prev.map(f => f.id === uploadableFile.id ? { ...f, status: 'error', progress: 0, error: error.message } : f));
+      }
+    }
+    
+    setIsUploading(false);
+    toast({
+        title: "Upload Concluído",
+        description: `O processamento de ${pendingFiles.length} arquivo(s) foi finalizado.`
     });
   };
 
@@ -87,16 +132,20 @@ export default function UploadPage() {
             <div className="flex-grow">
               <p className="font-semibold truncate">{uploadableFile.file.name}</p>
               <p className="text-xs text-muted-foreground">{(uploadableFile.file.size / 1024 / 1024).toFixed(2)} MB</p>
-              <Progress value={uploadableFile.progress} className="mt-2" />
+              {uploadableFile.status !== 'error' && <Progress value={uploadableFile.progress} className="mt-2" />}
+              {uploadableFile.status === 'error' && <p className="text-xs text-destructive mt-1">{uploadableFile.error}</p>}
             </div>
-            <Button variant="ghost" size="icon" onClick={() => removeFile(uploadableFile.id, target)}>
+            {uploadableFile.status === 'uploading' && <Loader2 className="h-5 w-5 animate-spin text-primary" />}
+            {uploadableFile.status === 'success' && <CheckCircle className="h-5 w-5 text-green-500" />}
+            <Button variant="ghost" size="icon" onClick={() => removeFile(uploadableFile.id, target)} disabled={uploadableFile.status === 'uploading'}>
               <X className="h-4 w-4" />
             </Button>
           </div>
         ))}
-         {files.length > 0 && (
-          <Button onClick={() => handleUpload(target)} className="w-full">
-            <UploadCloud className="mr-2 h-4 w-4" /> Iniciar Upload de {files.length} arquivo(s)
+         {files.filter(f => f.status === 'pending').length > 0 && (
+          <Button onClick={() => handleUpload(target)} className="w-full" disabled={isUploading}>
+            {isUploading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <UploadCloud className="mr-2 h-4 w-4" />}
+             Iniciar Upload de {files.filter(f => f.status === 'pending').length} arquivo(s)
           </Button>
         )}
       </div>
@@ -124,11 +173,11 @@ export default function UploadPage() {
               Enviar Fotos
             </CardTitle>
             <CardDescription>
-              Arraste e solte ou clique para selecionar as imagens. Formatos aceitos: JPG, PNG, GIF.
+              Arraste e solte ou clique para selecionar as imagens. Formatos aceitos: JPG, PNG, GIF, WebP.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div {...getImageRootProps()} className="p-8 border-2 border-dashed rounded-lg text-center cursor-pointer hover:border-primary transition-colors data-[drag-active=true]:border-primary">
+            <div {...getImageRootProps()} className="p-8 border-2 border-dashed rounded-lg text-center cursor-pointer hover:border-primary transition-colors data-[drag-active=true]:border-primary" data-drag-active={isImageDragActive}>
               <input {...getImageInputProps()} />
               <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground" />
               <p className="mt-4 text-muted-foreground">{isImageDragActive ? 'Solte as imagens aqui...' : 'Arraste e solte ou clique para selecionar'}</p>
@@ -144,11 +193,11 @@ export default function UploadPage() {
               Enviar Vídeos
             </CardTitle>
             <CardDescription>
-              Arraste e solte ou clique para selecionar os vídeos. Formatos aceitos: MP4, MOV.
+              Arraste e solte ou clique para selecionar os vídeos. Formatos aceitos: MP4, MOV, WebM.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div {...getVideoRootProps()} className="p-8 border-2 border-dashed rounded-lg text-center cursor-pointer hover:border-primary transition-colors data-[drag-active=true]:border-primary">
+            <div {...getVideoRootProps()} className="p-8 border-2 border-dashed rounded-lg text-center cursor-pointer hover:border-primary transition-colors data-[drag-active=true]:border-primary" data-drag-active={isVideoDragActive}>
               <input {...getVideoInputProps()} />
               <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground" />
               <p className="mt-4 text-muted-foreground">{isVideoDragActive ? 'Solte os vídeos aqui...' : 'Arraste e solte ou clique para selecionar'}</p>
