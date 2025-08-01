@@ -50,7 +50,7 @@ const fetchTwitterMediaFlow = ai.defineFlow(
     inputSchema: TwitterMediaInputSchema,
     outputSchema: TwitterMediaOutputSchema,
   },
-  async ({ username, maxResults }) => {
+  async ({ username, maxResults = 100 }) => {
 
     const now = Date.now();
     const cachedEntry = cache.get(username);
