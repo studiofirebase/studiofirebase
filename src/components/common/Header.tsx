@@ -2,15 +2,17 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, User, Shield } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
 
 export function Header() {
   const pathname = usePathname();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -55,11 +57,27 @@ export function Header() {
                           </SheetClose>
                         ))}
                     </nav>
-                    <SheetClose asChild>
-                      <Button asChild variant="default">
-                          <Link href="/login">Entrar</Link>
-                      </Button>
-                    </SheetClose>
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                         <Button variant="default">Entrar</Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                          <DialogTitle>Escolha o tipo de acesso</DialogTitle>
+                          <DialogDescription>
+                            Selecione se você é um cliente ou administrador para continuar.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <Button asChild>
+                                <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
+                            </Button>
+                            <Button asChild variant="outline">
+                                <Link href="/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                            </Button>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                 </div>
             </SheetContent>
           </Sheet>
@@ -86,9 +104,27 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-4">
-          <Button asChild variant="default" size="sm" className="hidden md:flex">
-            <Link href="/login">Entrar</Link>
-          </Button>
+           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                 <Button variant="default" size="sm" className="hidden md:flex">Entrar</Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Escolha o tipo de acesso</DialogTitle>
+                  <DialogDescription>
+                    Selecione se você é um cliente ou administrador para continuar.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                    <Button asChild>
+                        <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
+                    </Button>
+                    <Button asChild variant="outline">
+                        <Link href="/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                    </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
         </div>
       </div>
     </header>
