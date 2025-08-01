@@ -72,7 +72,7 @@ export default function SubscriptionsPage() {
               <ul className="space-y-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start">
-                    <Check className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-1" />
+                    <Check className="h-5 w-5 text-primary mr-2 flex-shrink-0 mt-1" />
                     <span>{feature}</span>
                   </li>
                 ))}

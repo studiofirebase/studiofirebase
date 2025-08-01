@@ -629,12 +629,12 @@ export function Testimonials() {
                   </div>
                 </div>
                 <div className="flex gap-0.5 mb-4">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />)}
+                    {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-primary fill-primary" />)}
                 </div>
                 <p className="text-muted-foreground">{testimonial.review}</p>
                 {testimonial.reply && (
                    <div className="mt-4 ml-8 p-4 bg-muted/50 rounded-lg">
-                       <div className="flex items-center gap-4 mb-2">
+                       <div className="flex items-center gap-2 mb-2">
                          <Avatar className="w-8 h-8">
                             <AvatarFallback>{testimonial.reply.avatarFallback}</AvatarFallback>
                          </Avatar>

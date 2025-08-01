@@ -76,7 +76,7 @@ export default function ReviewsPage() {
                                     <div>
                                         <CardTitle className="text-xl font-headline">{review.name}</CardTitle>
                                         <div className="flex gap-0.5 mt-1">
-                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />)}
+                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-primary fill-primary" />)}
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ export default function ReviewsPage() {
                                     <div>
                                         <CardTitle className="text-xl font-headline">{review.name}</CardTitle>
                                         <div className="flex gap-0.5 mt-1">
-                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />)}
+                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-primary fill-primary" />)}
                                         </div>
                                     </div>
                                 </div>
@@ -127,7 +127,7 @@ export default function ReviewsPage() {
                                 </div>
                             </CardContent>
                             <CardFooter className="flex justify-between items-center">
-                                <Button variant="link" className="p-0 text-red-500 hover:text-red-600" onClick={() => handleStatusChange(review.id, 'rejected')}>
+                                <Button variant="link" className="p-0 text-destructive hover:text-destructive/80" onClick={() => handleStatusChange(review.id, 'rejected')}>
                                     Mover para Rejeitadas
                                 </Button>
                                 <Button size="sm">Salvar Resposta</Button>
