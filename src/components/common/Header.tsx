@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -75,10 +76,10 @@ export function Header() {
                         </DialogHeader>
                         <div className="grid gap-4 py-4">
                             <Button asChild>
-                                <Link href="/login" onClick={closeSheetAndDialog}><User /> Acesso Cliente</Link>
+                                <Link href="/login" onClick={closeSheetAndDialog}><User className="mr-2 h-4 w-4" /> Acesso Cliente</Link>
                             </Button>
                             <Button asChild variant="outline">
-                                <Link href="/admin/login" onClick={closeSheetAndDialog}><Shield/> Acesso ADM</Link>
+                                <Link href="/admin/login" onClick={closeSheetAndDialog}><Shield className="mr-2 h-4 w-4" /> Acesso ADM</Link>
                             </Button>
                         </div>
                       </DialogContent>
@@ -122,10 +123,10 @@ export function Header() {
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                     <Button asChild>
-                        <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
+                        <Link href="/login" onClick={() => setIsDialogOpen(false)}><User className="mr-2 h-4 w-4" /> Acesso Cliente</Link>
                     </Button>
                     <Button asChild variant="outline">
-                        <Link href="/admin/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                        <Link href="/admin/login" onClick={() => setIsDialogOpen(false)}><Shield className="mr-2 h-4 w-4" /> Acesso ADM</Link>
                     </Button>
                 </div>
               </DialogContent>

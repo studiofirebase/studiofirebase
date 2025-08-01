@@ -1,9 +1,14 @@
+
+"use client";
+
+import { useState } from "react";
 import { getAllContent } from "@/lib/content";
 import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
-import { Apple, CreditCard } from "lucide-react";
+import { Apple, CreditCard, User, Shield } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -14,6 +19,7 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function Home() {
   const allContent = getAllContent();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   return (
     <>
@@ -43,6 +49,29 @@ export default function Home() {
                  <div className="mt-8 text-center">
                     <span className="text-6xl font-bold text-primary">99,00</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
+                </div>
+                <div className="mt-4">
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                         <Button size="lg">Entrar</Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                          <DialogTitle>Escolha o tipo de acesso</DialogTitle>
+                          <DialogDescription>
+                            Selecione se você é um cliente ou administrador para continuar.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <Button asChild>
+                                <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
+                            </Button>
+                            <Button asChild variant="outline">
+                                <Link href="/admin/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                            </Button>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                 </div>
             </div>
         </div>
