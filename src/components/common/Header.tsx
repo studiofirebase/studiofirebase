@@ -76,13 +76,13 @@ export function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Home" },
+    { href: "/fetish-bdsm", label: "FETISH & BDSM" },
     { href: "/photos", label: "Fotos" },
     { href: "/videos", label: "Vídeos" },
     { href: "/store", label: "Loja" },
     { href: "/subscriptions", label: "Assinatura" },
     { href: "/channels", label: "Canais" },
-    { href: "/fetish-bdsm", label: "FETISH & BDSM" },
+    { href: "/", label: "Home" },
   ];
 
   const closeSheetAndDialog = () => {
@@ -104,8 +104,8 @@ export function Header() {
             <SheetContent side="left" className="bg-background text-foreground">
                 <div className="flex flex-col gap-6">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsSheetOpen(false)}>
-                        <Menu className="h-6 w-6 text-foreground" />
-                        <span className="font-headline text-xl font-bold text-foreground">
+                        <Menu className="h-6 w-6 text-primary" />
+                        <span className="font-headline text-xl font-bold text-primary">
                             Italo Santos
                         </span>
                     </Link>
