@@ -107,7 +107,7 @@ export default function Home() {
 
                  <div className="mt-8 text-center">
                     {/* O preço será editável no painel ADM */}
-                    <span className="text-6xl font-bold neon-gold-text">{price}</span>
+                    <span className="text-8xl font-bold neon-gold-text">{price}</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
