@@ -181,17 +181,17 @@ export function Header() {
                 <span className="sr-only">Abrir menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="bg-primary text-primary-foreground">
+            <SheetContent side="left" className="bg-background text-foreground">
                 <div className="flex flex-col gap-6">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsSheetOpen(false)}>
-                        <Menu className="h-6 w-6 text-primary-foreground" />
-                        <span className="font-headline text-xl font-bold text-primary-foreground">
+                        <Menu className="h-6 w-6 text-foreground" />
+                        <span className="font-headline text-xl font-bold text-foreground">
                             Italo Santos
                         </span>
                     </Link>
                     <nav className="grid gap-2">
                         <SheetClose asChild>
-                           <Link href="/fetish-bdsm" className={cn("transition-colors -mx-2 px-2 py-1 rounded hover:bg-primary-foreground/10", pathname === "/fetish-bdsm" ? "text-primary-foreground" : "text-primary-foreground/60")}>
+                           <Link href="/fetish-bdsm" className={cn("transition-colors -mx-2 px-2 py-1 rounded hover:bg-accent/10", pathname === "/fetish-bdsm" ? "text-foreground" : "text-foreground/60")}>
                                 FETISH & BDSM
                             </Link>
                         </SheetClose>
@@ -200,8 +200,8 @@ export function Header() {
                             <Link
                               href={link.href}
                               className={cn(
-                                "transition-colors -mx-2 px-2 py-1 rounded hover:bg-primary-foreground/10",
-                                pathname === link.href ? "text-primary-foreground" : "text-primary-foreground/60"
+                                "transition-colors -mx-2 px-2 py-1 rounded hover:bg-accent/10",
+                                pathname === link.href ? "text-foreground" : "text-foreground/60"
                               )}
                             >
                               {link.label}
