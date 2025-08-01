@@ -198,15 +198,24 @@ export function Header() {
                     <nav className="grid gap-2">
                          <Accordion type="single" collapsible className="w-full">
                           <AccordionItem value="item-1" className="border-b-0">
-                            <AccordionTrigger className="py-1 -mx-2 px-2 rounded hover:bg-accent/10 hover:no-underline text-foreground/60 hover:text-foreground/80 transition-colors">FETISH & BDSM</AccordionTrigger>
-                            <AccordionContent className="pl-4">
-                               <div className="flex flex-col gap-1 mt-1">
+                            <AccordionTrigger className="py-1 -mx-2 px-2 rounded hover:bg-muted/50 hover:no-underline text-foreground/80 hover:text-foreground transition-colors">FETISH & BDSM</AccordionTrigger>
+                            <AccordionContent className="pl-2">
+                               <Accordion type="multiple" className="w-full">
                                 {fetishCategories.map((category) => (
-                                    <SheetClose asChild key={category.title}>
-                                      <Link href="/fetish-bdsm" className="block transition-colors -mx-2 px-2 py-1 rounded hover:bg-accent/10 text-foreground/60">{category.title}</Link>
-                                    </SheetClose>
+                                    <AccordionItem value={category.title} key={category.title} className="border-b-0">
+                                        <AccordionTrigger className="py-1 -mx-2 px-2 rounded text-sm hover:bg-muted/50 hover:no-underline text-foreground/60 hover:text-foreground/80 transition-colors">
+                                            {category.title}
+                                        </AccordionTrigger>
+                                        <AccordionContent className="pl-4 pt-1">
+                                            <div className="flex flex-col gap-1 text-foreground/60">
+                                                {category.items.map((item) => (
+                                                    <span key={item} className="text-sm py-1">{item}</span>
+                                                ))}
+                                            </div>
+                                        </AccordionContent>
+                                    </AccordionItem>
                                 ))}
-                               </div>
+                               </Accordion>
                             </AccordionContent>
                           </AccordionItem>
                         </Accordion>
@@ -215,7 +224,7 @@ export function Header() {
                             <Link
                               href={link.href}
                               className={cn(
-                                "transition-colors -mx-2 px-2 py-1 rounded hover:bg-accent/10",
+                                "transition-colors -mx-2 px-2 py-1 rounded hover:bg-muted/50",
                                 pathname === link.href ? "text-foreground" : "text-foreground/60"
                               )}
                             >
