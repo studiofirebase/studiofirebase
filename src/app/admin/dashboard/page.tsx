@@ -18,55 +18,64 @@ const adminFeatures = [
         icon: MessageSquare,
         title: "Conversas",
         description: "Gerencie conversas iniciadas, histórico e veja visitantes em tempo real.",
-        buttonText: "Ver Chats"
+        buttonText: "Ver Chats",
+        href: "/admin/conversations"
     },
     {
         icon: Users,
         title: "Assinantes",
         description: "Visualize a lista de assinantes ativos, remova assinantes e ofereça acessos de teste (free trial).",
-        buttonText: "Gerenciar Assinantes"
+        buttonText: "Gerenciar Assinantes",
+        href: "/admin/subscribers"
     },
     {
         icon: Package,
         title: "Produtos",
         description: "Adicione e edite os produtos da sua loja online.",
-        buttonText: "Ver Produtos"
+        buttonText: "Ver Produtos",
+        href: "/admin/products"
     },
     {
         icon: ImageIcon,
         title: "Fotos",
         description: "Gerencie a galeria de fotos do site.",
-        buttonText: "Gerenciar Fotos"
+        buttonText: "Gerenciar Fotos",
+        href: "/admin/photos"
     },
     {
         icon: Film,
         title: "Vídeos",
         description: "Faça a gestão dos vídeos que aparecem no site.",
-        buttonText: "Gerenciar Vídeos"
+        buttonText: "Gerenciar Vídeos",
+        href: "/admin/videos"
     },
     {
         icon: Upload,
         title: "Upload de Mídia",
         description: "Faça upload de novas fotos e vídeos.",
-        buttonText: "Fazer Upload"
+        buttonText: "Fazer Upload",
+        href: "/admin/upload"
     },
     {
         icon: GitMerge,
         title: "Integrações",
         description: "Conecte o site com Facebook, Instagram, Twitter, PayPal e Mercado Pago.",
-        buttonText: "Configurar Integrações"
+        buttonText: "Configurar Integrações",
+        href: "/admin/integrations"
     },
     {
         icon: Star,
         title: "Avaliações",
         description: "Modere os comentários e avaliações que aguardam aprovação.",
-        buttonText: "Ver Avaliações"
+        buttonText: "Ver Avaliações",
+        href: "/admin/reviews"
     },
     {
         icon: Settings,
         title: "Configurações",
         description: "Ajuste as configurações gerais do site.",
-        buttonText: "Ajustar Configurações"
+        buttonText: "Ajustar Configurações",
+        href: "/admin/settings"
     },
 ]
 
@@ -92,7 +101,9 @@ export default function AdminDashboardPage() {
                 </CardHeader>
                 <CardContent className="flex flex-col gap-4">
                     <p className="text-muted-foreground flex-grow">{feature.description}</p>
-                    <Button variant="outline">{feature.buttonText}</Button>
+                    <Button asChild variant="outline">
+                        <Link href={feature.href}>{feature.buttonText}</Link>
+                    </Button>
                 </CardContent>
             </Card>
         ))}
