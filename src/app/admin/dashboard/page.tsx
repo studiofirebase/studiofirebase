@@ -53,7 +53,7 @@ const adminFeatures = [
     {
         icon: GitMerge,
         title: "Integrações",
-        description: "Conecte o site com redes sociais e outras ferramentas.",
+        description: "Conecte o site com Facebook, Instagram, Twitter, PayPal e Mercado Pago.",
         buttonText: "Configurar Integrações"
     },
     {
