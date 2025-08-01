@@ -189,9 +189,9 @@ export function Header() {
                             Italo Santos
                         </span>
                     </Link>
-                    <nav className="grid gap-4">
+                    <nav className="grid gap-2">
                         <SheetClose asChild>
-                           <Link href="/fetish-bdsm" className={cn("transition-colors hover:text-foreground/80", pathname === "/fetish-bdsm" ? "text-foreground" : "text-foreground/60")}>
+                           <Link href="/fetish-bdsm" className={cn("transition-colors -mx-2 px-2 py-1 rounded hover:bg-muted", pathname === "/fetish-bdsm" ? "text-foreground" : "text-foreground/60")}>
                                 FETISH & BDSM
                             </Link>
                         </SheetClose>
@@ -200,7 +200,7 @@ export function Header() {
                             <Link
                               href={link.href}
                               className={cn(
-                                "transition-colors hover:text-foreground/80",
+                                "transition-colors -mx-2 px-2 py-1 rounded hover:bg-muted",
                                 pathname === link.href ? "text-foreground" : "text-foreground/60"
                               )}
                             >
