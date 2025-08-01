@@ -4,10 +4,11 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowLeft, Facebook, Instagram, Twitter } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
+import { ArrowLeft, Facebook, Instagram, Twitter, Save } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 const PayPalIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" {...props}>
@@ -21,27 +22,64 @@ const MercadoPagoIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
-
-const initialIntegrations = {
-    facebook: { name: 'Facebook', icon: Facebook, connected: true },
-    instagram: { name: 'Instagram', icon: Instagram, connected: true },
-    twitter: { name: 'Twitter (X)', icon: Twitter, connected: false },
-    mercadopago: { name: 'Mercado Pago', icon: MercadoPagoIcon, connected: false },
-};
-
-type IntegrationKey = keyof typeof initialIntegrations;
+const integrations = [
+    {
+        id: 'facebook',
+        name: 'Facebook',
+        icon: Facebook,
+        description: 'Gerencie o token de acesso da sua página para buscar produtos do catálogo.',
+        fields: [{ id: 'FACEBOOK_PAGE_ACCESS_TOKEN', label: 'Token de Acesso da Página' }]
+    },
+    {
+        id: 'instagram_feed',
+        name: 'Instagram (Feed)',
+        icon: Instagram,
+        description: 'Gerencie o token de acesso do perfil @severepics para o feed de fotos.',
+        fields: [{ id: 'INSTAGRAM_FEED_ACCESS_TOKEN', label: 'Token de Acesso (@severepics)' }]
+    },
+    {
+        id: 'instagram_shop',
+        name: 'Instagram (Loja)',
+        icon: Instagram,
+        description: 'Gerencie o token de acesso do perfil @severetoys para a loja.',
+        fields: [{ id: 'INSTAGRAM_SHOP_ACCESS_TOKEN', label: 'Token de Acesso (@severetoys)' }]
+    },
+    {
+        id: 'twitter',
+        name: 'Twitter (X)',
+        icon: Twitter,
+        description: 'Gerencie seu Bearer Token para buscar mídias do Twitter.',
+        fields: [{ id: 'TWITTER_BEARER_TOKEN', label: 'Bearer Token' }]
+    },
+    {
+        id: 'paypal',
+        name: 'PayPal',
+        icon: PayPalIcon,
+        description: 'Configure as credenciais da API do PayPal para processar pagamentos.',
+        fields: [
+            { id: 'PAYPAL_CLIENT_ID', label: 'Client ID' },
+            { id: 'PAYPAL_CLIENT_SECRET', label: 'Client Secret' },
+        ]
+    },
+    {
+        id: 'mercadopago',
+        name: 'Mercado Pago',
+        icon: MercadoPagoIcon,
+        description: 'Configure seu token de acesso para gerar cobranças Pix.',
+        fields: [{ id: 'MERCADOPAGO_ACCESS_TOKEN', label: 'Access Token' }]
+    },
+]
 
 export default function IntegrationsPage() {
-    const [integrations, setIntegrations] = useState(initialIntegrations);
+    const { toast } = useToast();
 
-    const toggleIntegration = (key: IntegrationKey) => {
-        setIntegrations(prev => ({
-            ...prev,
-            [key]: {
-                ...prev[key],
-                connected: !prev[key].connected,
-            },
-        }));
+    const handleSave = (integrationId: string) => {
+        // Lógica para salvar as credenciais (em um ambiente real, seria uma chamada de API)
+        console.log(`Salvando credenciais para ${integrationId}`);
+        toast({
+            title: `Integração ${integrationId} Salva!`,
+            description: "Suas credenciais foram salvas com sucesso (simulação).",
+        });
     };
 
   return (
@@ -58,34 +96,32 @@ export default function IntegrationsPage() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {Object.entries(integrations).map(([key, item]) => (
-            <Card key={key}>
+      <div className="space-y-8">
+        {integrations.map((integration) => (
+            <Card key={integration.id}>
                 <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                        <div className="flex items-center gap-3 font-headline">
-                            <item.icon className="h-7 w-7" /> {item.name}
-                        </div>
-                        <Badge variant={item.connected ? 'default' : 'secondary'}>
-                            {item.connected ? "Conectado" : "Desconectado"}
-                        </Badge>
+                    <CardTitle className="flex items-center gap-3 font-headline">
+                        <integration.icon className="h-7 w-7" /> {integration.name}
                     </CardTitle>
+                    <CardDescription>{integration.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                    <Button 
-                        className="w-full" 
-                        variant={item.connected ? 'destructive' : 'outline'}
-                        onClick={() => toggleIntegration(key as IntegrationKey)}
-                    >
-                        {item.connected ? 'Desconectar' : 'Conectar'}
-                    </Button>
+                <CardContent className="space-y-4">
+                    {integration.fields.map(field => (
+                         <div key={field.id} className="space-y-2">
+                            <Label htmlFor={field.id}>{field.label}</Label>
+                            <Input id={field.id} type="password" placeholder="Cole sua credencial aqui" />
+                        </div>
+                    ))}
                 </CardContent>
+                <CardFooter>
+                    <Button onClick={() => handleSave(integration.name)}>
+                        <Save className="mr-2 h-4 w-4" />
+                        Salvar Credenciais
+                    </Button>
+                </CardFooter>
             </Card>
         ))}
       </div>
-       <p className="text-center text-sm text-muted-foreground mt-8">
-            As integrações com redes sociais alimentarão as páginas de Fotos e Vídeos. As de pagamento habilitarão novas opções no checkout.
-        </p>
     </div>
   );
 }
