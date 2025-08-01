@@ -1,6 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Twitter, Instagram, Upload } from "lucide-react";
-import { fetchTwitterFeed, TweetWithMedia } from "@/ai/flows/twitter-feed-flow";
+import { Instagram, Upload } from "lucide-react";
 import { fetchInstagramProfileFeed, InstagramMedia } from "@/ai/flows/instagram-feed-flow";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,31 +11,12 @@ interface MediaItem {
   text?: string | null;
   imageUrl: string;
   postUrl: string;
-  source: 'Twitter' | 'Instagram';
+  source: 'Instagram';
 }
 
 export default async function PhotosPage() {
   let allPhotos: MediaItem[] = [];
   const errors: string[] = [];
-
-  // Fetch from Twitter
-  try {
-    const twitterFeed = await fetchTwitterFeed({ username: "italoosantos" });
-    const twitterPhotos = twitterFeed.tweets.flatMap((tweet: TweetWithMedia) => 
-        tweet.media
-            .filter(media => media.type === 'photo' && media.url)
-            .map(media => ({
-                id: media.media_key,
-                text: tweet.text,
-                imageUrl: media.url!,
-                postUrl: `https://twitter.com/italosantosbr/status/${tweet.id}`,
-                source: 'Twitter' as const,
-            }))
-    );
-    allPhotos.push(...twitterPhotos);
-  } catch (e: any) {
-    errors.push(e.message || "An unexpected error occurred while fetching from Twitter.");
-  }
 
   // Fetch from Instagram (@severepics)
   try {
@@ -72,9 +52,6 @@ export default async function PhotosPage() {
           Um banquete para os olhos. Veja nossas fotos mais recentes, direto das nossas redes sociais e de uploads exclusivos.
         </p>
         <div className="flex justify-center gap-4 mt-4">
-            <Link href="https://twitter.com/italosantosbr" target="_blank" aria-label="Twitter">
-                <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary" />
-            </Link>
             <Link href="https://instagram.com/severepics" target="_blank" aria-label="Instagram">
                 <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary" />
             </Link>
@@ -112,7 +89,6 @@ export default async function PhotosPage() {
                         />
                       )}
                       <div className="absolute bottom-1 right-1">
-                          {photo.source === 'Twitter' && <Twitter className="h-5 w-5 text-white/80 bg-black/50 rounded-full p-1"/>}
                           {photo.source === 'Instagram' && <Instagram className="h-5 w-5 text-white/80 bg-black/50 rounded-full p-1"/>}
                       </div>
                   </div>
