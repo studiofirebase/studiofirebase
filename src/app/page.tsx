@@ -68,8 +68,8 @@ export default function Home() {
       </Dialog>
 
 
-      <section className="pb-20 md:pb-32">
-        <div className="container text-center">
+      <section className="pb-8">
+        <div className="text-center">
           
           <div className="mb-8 flex justify-center">
             <Image 
@@ -87,7 +87,7 @@ export default function Home() {
                     <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
                     <div>
                         <p className="text-sm text-muted-foreground mb-2">Pague com</p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        <div className="grid grid-cols-4 gap-2">
                             <Button variant="outline"><GoogleIcon className="h-5 w-5" /> Google</Button>
                             <Button variant="outline"><CreditCard className="h-5 w-5" /> Pix</Button>
                             <Button variant="outline"><Apple className="h-5 w-5" /> Apple</Button>
@@ -132,7 +132,7 @@ export default function Home() {
       
       <section id="featured-content" className="py-12 md:py-16">
         <div className="container">
-          <div className="text-center">
+          <div className="text-center mb-8">
             <h2 className="font-headline text-4xl md:text-5xl text-primary">
               SOBRE
             </h2>

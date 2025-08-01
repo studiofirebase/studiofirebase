@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogFooter, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
 
 export function Header() {
   const pathname = usePathname();
@@ -45,7 +45,7 @@ export function Header() {
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsSheetOpen(false)}>
                         <Menu className="h-6 w-6 text-primary" />
                         <span className="font-headline text-xl font-bold text-primary">
-                            BurgerHub
+                            Italo Santos
                         </span>
                     </Link>
                     <nav className="grid gap-4">
@@ -90,7 +90,7 @@ export function Header() {
           <Link href="/" className="hidden items-center gap-2 md:flex">
             <Menu className="h-6 w-6 text-primary" />
             <span className="font-headline text-xl font-bold text-primary">
-              BurgerHub
+              Italo Santos
             </span>
           </Link>
         </div>

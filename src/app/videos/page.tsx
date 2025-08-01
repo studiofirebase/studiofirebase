@@ -36,7 +36,7 @@ export default function VideosPage() {
           Nossos Vídeos
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Assista aos nossos vídeos mais recentes, direto do Twitter e de uploads exclusivos. Fique por dentro dos bastidores, receitas e os melhores momentos da BurgerHub.
+          Assista aos nossos vídeos mais recentes, direto do Twitter e de uploads exclusivos. Fique por dentro dos bastidores, receitas e os melhores momentos.
         </p>
         <div className="flex justify-center gap-4 mt-4">
             <Twitter className="h-6 w-6 text-muted-foreground" />

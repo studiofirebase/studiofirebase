@@ -5,7 +5,7 @@ import { ShoppingCart } from "lucide-react";
 const storeItems = [
   {
     id: 1,
-    name: "Boné BurgerHub",
+    name: "Boné Italo Santos",
     price: "R$ 49,90",
     image: "https://placehold.co/600x400.png",
     dataAiHint: "cap fashion"
@@ -41,7 +41,7 @@ export default function StorePage() {
           Nossa Loja
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Leve um pedaço da BurgerHub para casa.
+          Leve um pedaço do Italo Santos para casa.
         </p>
       </div>
 
