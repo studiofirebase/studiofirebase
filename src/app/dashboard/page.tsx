@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { User, Heart, ShoppingBag } from "lucide-react";
+import { User, Video, ShoppingBag } from "lucide-react";
 
 export default function DashboardPage() {
   return (
@@ -30,22 +30,22 @@ export default function DashboardPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline">
-                <ShoppingBag className="h-6 w-6" /> Meus Pedidos
+                <ShoppingBag className="h-6 w-6" /> Vídeos Adquiridos
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
-            <p>Acompanhe seus pedidos e veja seu histórico.</p>
-            <Button variant="outline">Ver Pedidos</Button>
+            <p>Acesse aqui os vídeos que você comprou de forma avulsa.</p>
+            <Button variant="outline">Ver Vídeos</Button>
           </CardContent>
         </Card>
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2 font-headline">
-                <Heart className="h-6 w-6" /> Minhas Assinaturas
+                <Video className="h-6 w-6" /> Minhas Assinaturas
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
-            <p>Gerencie suas assinaturas e canais.</p>
+            <p>Gerencie suas assinaturas e seu acesso aos conteúdos.</p>
             <Button variant="outline">Ver Assinaturas</Button>
           </CardContent>
         </Card>
