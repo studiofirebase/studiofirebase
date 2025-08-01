@@ -7,7 +7,7 @@ import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
-import { Apple, CreditCard, User, Shield, Camera } from "lucide-react";
+import { Apple, CreditCard, User, Shield } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { LocationMap } from "@/components/home/LocationMap";
@@ -84,12 +84,13 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
-                    <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
+                    <Button variant="outline" className="w-full">Face ID</Button>
                     <div>
-                        <div className="grid grid-cols-3 gap-2">
+                        <div className="grid grid-cols-4 gap-2">
                             <Button variant="outline"><GoogleIcon className="h-5 w-5" /> Google</Button>
                             <Button variant="outline"><CreditCard className="h-5 w-5" /> Pix</Button>
                             <Button variant="outline"><Apple className="h-5 w-5" /> Apple</Button>
+                            <Button variant="outline"><PayPalIcon className="h-5 w-5" /> PayPal</Button>
                         </div>
                     </div>
                 </div>
@@ -98,9 +99,6 @@ export default function Home() {
                     {/* O preço será editável no painel ADM */}
                     <span className="text-6xl font-bold text-primary">{price}</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
-                </div>
-                <div className="w-full max-w-sm mx-auto mt-4">
-                    <Button variant="outline" className="w-full"><PayPalIcon className="h-5 w-5" /> PayPal</Button>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
@@ -155,5 +153,3 @@ export default function Home() {
     </>
   );
 }
-
-    
