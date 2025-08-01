@@ -91,7 +91,7 @@ export default function Home() {
       </Dialog>
 
 
-      <section className="pb-8">
+      <section className="pb-8 container">
         <div className="text-center">
           
           <div className="mb-8 relative flex justify-center">
@@ -139,6 +139,32 @@ export default function Home() {
       </section>
 
       <Marquee />
+
+      <section className="py-16 md:py-24 container">
+        <div className="text-center mb-12">
+            <h2 className="font-headline text-3xl md:text-4xl">SOBRE</h2>
+            <p className="mx-auto max-w-2xl mt-4 text-muted-foreground">
+                {presentationText}
+            </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
+            {Array.from({ length: 7 }).map((_, index) => (
+                <div key={index} className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer hover:neon-border-primary">
+                    <div className="aspect-video">
+                        <Image
+                            src="https://placehold.co/600x400.png"
+                            alt={`Foto do feed ${index + 1}`}
+                            width={600}
+                            height={400}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            data-ai-hint="male model"
+                        />
+                    </div>
+                </div>
+            ))}
+        </div>
+      </section>
 
       <Testimonials />
       <LocationMap />
