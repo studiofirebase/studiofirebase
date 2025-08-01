@@ -7,7 +7,7 @@ import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
-import { Apple, CreditCard, User, Shield } from "lucide-react";
+import { Apple, CreditCard, User, Shield, Camera } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -40,7 +40,8 @@ export default function Home() {
             </Button>
           </div>
             <div className="mt-8 flex flex-col items-center gap-4">
-                <p className="text-sm text-muted-foreground">Pague com</p>
+                <Button variant="outline"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
+                <p className="text-sm text-muted-foreground pt-4">Pague com</p>
                 <div className="flex justify-center gap-4">
                     <Button variant="outline"><GoogleIcon className="mr-2 h-5 w-5" /> Google Pay</Button>
                     <Button variant="outline"><CreditCard className="mr-2 h-5 w-5" /> Pix</Button>
