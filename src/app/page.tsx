@@ -40,13 +40,18 @@ export default function Home() {
             </Button>
           </div>
             <div className="mt-8 flex flex-col items-center gap-4">
-                <Button variant="outline"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
-                <p className="text-sm text-muted-foreground pt-4">Pague com</p>
-                <div className="flex justify-center gap-4">
-                    <Button variant="outline"><GoogleIcon className="mr-2 h-5 w-5" /> Google Pay</Button>
-                    <Button variant="outline"><CreditCard className="mr-2 h-5 w-5" /> Pix</Button>
-                    <Button variant="outline"><Apple className="mr-2 h-5 w-5" /> Apple Pay</Button>
+                <div className="w-full max-w-sm mx-auto space-y-4">
+                    <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
+                    <div>
+                        <p className="text-sm text-muted-foreground mb-2">Pague com</p>
+                        <div className="grid grid-cols-3 gap-2">
+                            <Button variant="outline"><GoogleIcon className="mr-2 h-5 w-5" /> Google</Button>
+                            <Button variant="outline"><CreditCard className="mr-2 h-5 w-5" /> Pix</Button>
+                            <Button variant="outline"><Apple className="mr-2 h-5 w-5" /> Apple</Button>
+                        </div>
+                    </div>
                 </div>
+
                  <div className="mt-8 text-center">
                     <span className="text-6xl font-bold text-primary">99,00</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
