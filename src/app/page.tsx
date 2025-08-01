@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getAllContent } from "@/lib/content";
 import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
@@ -28,7 +28,14 @@ const PayPalIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function Home() {
   const allContent = getAllContent();
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
+  const [isAgeGateOpen, setIsAgeGateOpen] = useState(false);
+
+  useEffect(() => {
+    // We only want this to run on the client after hydration
+    // to avoid a server-client mismatch.
+    setIsAgeGateOpen(true);
+  }, []);
 
   // Futuramente, estes valores virão do painel de administração
   const presentationText = "Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.";
@@ -37,6 +44,22 @@ export default function Home() {
 
   return (
     <>
+      <Dialog open={isAgeGateOpen} onOpenChange={setIsAgeGateOpen}>
+        <DialogContent className="sm:max-w-[425px]" onInteractOutside={(e) => e.preventDefault()}>
+          <DialogHeader>
+            <DialogTitle>Aviso de Conteúdo Adulto</DialogTitle>
+            <DialogDescription>
+              Este site contém material destinado a maiores de 18 anos.
+              Ao prosseguir, você confirma que tem idade legal para visualizar este conteúdo.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+              <Button onClick={() => setIsAgeGateOpen(false)}>Tenho mais de 18 e concordo</Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+
       <section className="pb-20 md:pb-32">
         <div className="container text-center">
           
@@ -71,7 +94,7 @@ export default function Home() {
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
-                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                    <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
                       <DialogTrigger asChild>
                          <Button size="lg" className="w-1/2">Entrar</Button>
                       </DialogTrigger>
@@ -84,10 +107,10 @@ export default function Home() {
                         </DialogHeader>
                         <div className="grid gap-4 py-4">
                             <Button asChild>
-                                <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
+                                <Link href="/login" onClick={() => setIsLoginDialogOpen(false)}><User /> Acesso Cliente</Link>
                             </Button>
                             <Button asChild variant="outline">
-                                <Link href="/admin/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                                <Link href="/admin/login" onClick={() => setIsLoginDialogOpen(false)}><Shield/> Acesso ADM</Link>
                             </Button>
                         </div>
                       </DialogContent>
@@ -123,3 +146,5 @@ export default function Home() {
     </>
   );
 }
+
+    
