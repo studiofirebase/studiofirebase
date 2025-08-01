@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Instagram, Upload } from "lucide-react";
+import { Instagram, Twitter, Upload } from "lucide-react";
 import { fetchInstagramProfileFeed, InstagramMedia } from "@/ai/flows/instagram-feed-flow";
+import { fetchTwitterFeed, TweetWithMedia } from "@/ai/flows/twitter-feed-flow";
 import Image from "next/image";
 import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -11,7 +12,7 @@ interface MediaItem {
   text?: string | null;
   imageUrl: string;
   postUrl: string;
-  source: 'Instagram';
+  source: 'Instagram' | 'Twitter';
 }
 
 export default async function PhotosPage() {
@@ -39,8 +40,24 @@ export default async function PhotosPage() {
       errors.push(e.message || "An unexpected error occurred while fetching from Instagram.");
   }
   
-  // Sort by date if possible (assuming timestamp is available and consistent)
-  // For now, we just combine them.
+  // Fetch from Twitter
+  try {
+    const twitterFeed = await fetchTwitterFeed({ username: "italosantosbr" });
+    const twitterPhotos = twitterFeed.tweets.flatMap((tweet: TweetWithMedia) => 
+        tweet.media
+            .filter(media => media.type === 'photo' && media.url)
+            .map(media => ({
+                id: media.media_key,
+                text: tweet.text,
+                imageUrl: media.url!,
+                postUrl: `https://twitter.com/italosantosbr/status/${tweet.id}`,
+                source: 'Twitter' as const,
+            }))
+    );
+    allPhotos.push(...twitterPhotos);
+  } catch (e: any) {
+    errors.push(e.message || "An unexpected error occurred while fetching from Twitter.");
+  }
 
   return (
     <div className="container py-16 md:py-24">
@@ -54,6 +71,9 @@ export default async function PhotosPage() {
         <div className="flex justify-center gap-4 mt-4">
             <Link href="https://instagram.com/severepics" target="_blank" aria-label="Instagram">
                 <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary" />
+            </Link>
+            <Link href="https://twitter.com/italosantosbr" target="_blank" aria-label="Twitter">
+              <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary" />
             </Link>
             <Upload className="h-6 w-6 text-muted-foreground" />
         </div>
@@ -90,6 +110,7 @@ export default async function PhotosPage() {
                       )}
                       <div className="absolute bottom-1 right-1">
                           {photo.source === 'Instagram' && <Instagram className="h-5 w-5 text-white/80 bg-black/50 rounded-full p-1"/>}
+                          {photo.source === 'Twitter' && <Twitter className="h-5 w-5 text-white/80 bg-black/50 rounded-full p-1"/>}
                       </div>
                   </div>
                   </CardContent>
