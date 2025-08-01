@@ -96,14 +96,12 @@ export default function Home() {
                     <Button asChild variant="default" className="w-full" size="lg">
                         <Link href="/login"><ScanFace className="mr-2"/> Face ID</Link>
                     </Button>
-                    <div className="grid grid-cols-2 gap-2">
-                         <Button asChild size="lg" className="w-full" variant="default">
+                    <div className="grid grid-cols-3 gap-2">
+                         <Button asChild className="w-full" variant="default">
                             <Link href="/login">Pix</Link>
                         </Button>
-                        <div className="grid grid-cols-2 gap-2">
-                            <Button variant="outline" size="lg"><GoogleIcon /> Google</Button>
-                            <Button variant="outline" size="lg"><AppleIcon /> Apple</Button>
-                        </div>
+                        <Button variant="outline"><GoogleIcon /> Google</Button>
+                        <Button variant="outline"><AppleIcon /> Apple</Button>
                     </div>
                 </div>
 
