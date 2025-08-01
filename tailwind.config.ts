@@ -82,12 +82,17 @@ export default {
         'neon-blink': {
           '0%, 100%': { opacity: '1', textShadow: '0 0 5px hsl(var(--gold)), 0 0 10px hsl(var(--gold))' },
           '50%': { opacity: '0.7', textShadow: '0 0 10px hsl(var(--gold)), 0 0 20px hsl(var(--gold))' },
+        },
+        'marquee': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(-50%)' },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'neon-blink': 'neon-blink 1.5s infinite alternate',
+        'marquee': 'marquee 30s linear infinite',
       },
     },
   },

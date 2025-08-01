@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
-import { ScanFace } from "lucide-react";
+import { ScanFace, CheckCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { LocationMap } from "@/components/home/LocationMap";
+import { cn } from "@/lib/utils";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -22,14 +23,39 @@ const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const marqueeItems = [
+    "Acesso a vídeos e ensaios completos.",
+    "Atualizações semanais com novas produções.",
+    "Comunidade e interação direta.",
+    "Conteúdo exclusivo e sem censura"
+];
+
+const Marquee = () => {
+    return (
+        <div className="relative flex w-full overflow-hidden border-y border-border/50 py-4 my-12">
+            <div className="animate-marquee whitespace-nowrap flex">
+                {marqueeItems.map((item, index) => (
+                    <div key={index} className="marquee-item">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-lg font-semibold">{item}</span>
+                    </div>
+                ))}
+                 {marqueeItems.map((item, index) => (
+                    <div key={`dup-${index}`} className="marquee-item" aria-hidden="true">
+                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <span className="text-lg font-semibold">{item}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
 
 
 export default function Home() {
   const [isAgeGateOpen, setIsAgeGateOpen] = useState(false);
 
   useEffect(() => {
-    // We only want this to run on the client after hydration
-    // to avoid a server-client mismatch.
     const hasSeenAgeGate = sessionStorage.getItem("ageGateConfirmed");
     if (!hasSeenAgeGate) {
       setIsAgeGateOpen(true);
@@ -112,34 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-8 separator-strong"></div>
-      
-      <section id="featured-content" className="py-12 md:py-16">
-        <div className="container">
-          <div className="text-center mb-8">
-            <h2 className="font-headline text-4xl md:text-5xl text-primary">
-              SOBRE
-            </h2>
-            {/* O texto de apresentação será editável no painel ADM */}
-            <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-              {presentationText}
-            </p>
-          </div>
-           <div className="grid grid-cols-1 gap-4 md:gap-6 mt-12 max-w-4xl mx-auto">
-            {[...Array(7)].map((_, index) => (
-                 <div key={index} className="aspect-video relative overflow-hidden rounded-lg group hover:neon-border-primary transition-all duration-300">
-                    <Image
-                      src={`https://placehold.co/600x400.png`}
-                      alt={`Foto do feed ${index + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      data-ai-hint="boudoir photo"
-                    />
-                  </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Marquee />
 
       <Testimonials />
       <LocationMap />
