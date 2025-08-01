@@ -21,7 +21,7 @@ export default async function VideosPage() {
 
   // Fetch from Twitter
   try {
-    const twitterFeed = await fetchTwitterFeed({ username: "italoosantos" });
+    const twitterFeed = await fetchTwitterFeed({ username: "italosantosbr" });
     const twitterVideos = twitterFeed.tweets.flatMap((tweet: TweetWithMedia) => 
         tweet.media
             .filter(media => (media.type === 'video' || media.type === 'animated_gif') && media.preview_image_url)
