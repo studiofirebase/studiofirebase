@@ -1,7 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { PlayCircle, Twitter, Instagram, Upload } from "lucide-react";
 import { fetchTwitterFeed, TweetWithMedia } from "@/ai/flows/twitter-feed-flow";
-import { fetchInstagramProfileFeed, InstagramMedia } from "@/ai/flows/instagram-feed-flow";
 import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
@@ -37,27 +36,6 @@ export default async function VideosPage() {
   } catch (e: any) {
     errors.push(e.message || "An unexpected error occurred while fetching from Twitter.");
   }
-
-  // Fetch from Instagram (@severepics)
-  try {
-    const instagramFeed = await fetchInstagramProfileFeed();
-    if (instagramFeed.error) {
-        errors.push(instagramFeed.error);
-    } else {
-        const instagramVideos = instagramFeed.media
-            .filter((item: InstagramMedia) => item.media_type === 'VIDEO' && item.thumbnail_url)
-            .map((item: InstagramMedia) => ({
-                id: item.id,
-                text: item.caption,
-                thumbnailUrl: item.thumbnail_url!,
-                postUrl: item.permalink,
-                source: 'Instagram' as const,
-            }));
-        allVideos.push(...instagramVideos);
-    }
-  } catch(e: any) {
-      errors.push(e.message || "An unexpected error occurred while fetching from Instagram.");
-  }
   
   // Sort by date if possible (assuming timestamp is available and consistent)
   // For now, we just combine them.
@@ -69,14 +47,11 @@ export default async function VideosPage() {
           Nossos Vídeos
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Assista aos nossos vídeos mais recentes, direto do Twitter, Instagram e de uploads exclusivos.
+          Assista aos nossos vídeos mais recentes, direto do Twitter e de uploads exclusivos.
         </p>
         <div className="flex justify-center gap-4 mt-4">
             <Link href="https://twitter.com/italosantosbr" target="_blank" aria-label="Twitter">
               <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary" />
-            </Link>
-            <Link href="https://instagram.com/severepics" target="_blank" aria-label="Instagram">
-                <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary" />
             </Link>
             <Upload className="h-6 w-6 text-muted-foreground" />
         </div>
@@ -113,7 +88,6 @@ export default async function VideosPage() {
                     </div>
                      <div className="absolute bottom-2 right-2">
                         {video.source === 'Twitter' && <Twitter className="h-5 w-5 text-white/80 bg-black/50 rounded-full p-1"/>}
-                        {video.source === 'Instagram' && <Instagram className="h-5 w-5 text-white/80 bg-black/50 rounded-full p-1"/>}
                     </div>
                   </div>
                   <div className="p-4">
