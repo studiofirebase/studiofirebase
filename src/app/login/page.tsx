@@ -76,11 +76,15 @@ export default function LoginPage() {
                 </span>
               </div>
             </div>
-            <Button variant="outline" className="w-full"><Camera className="mr-2 h-4 w-4" /> Acessar com Rosto</Button>
+            <Button asChild variant="outline" className="w-full">
+              <Link href="/facial-login">
+                <Camera className="mr-2 h-4 w-4" /> Acessar com Rosto
+              </Link>
+            </Button>
             <p className="text-center text-sm text-muted-foreground">
               Não tem uma conta?{" "}
               <Link
-                href="#"
+                href="/register"
                 className="font-semibold text-primary underline-offset-4 hover:underline"
               >
                 Cadastre-se
