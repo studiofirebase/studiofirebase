@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { Header } from '@/components/common/Header';
 import { Footer } from '@/components/common/Footer';
 import { Toaster } from "@/components/ui/toaster";
+import { ChatWidget } from '@/components/chat/ChatWidget';
 
 export const metadata: Metadata = {
   title: 'Hamburgueria - Os Melhores da Cidade',
@@ -28,6 +29,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
             <Footer />
         </div>
+        <ChatWidget />
         <Toaster />
       </body>
     </html>
