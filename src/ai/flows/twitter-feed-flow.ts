@@ -37,11 +37,8 @@ export type TwitterMediaOutput = z.infer<typeof TwitterMediaOutputSchema>;
 export type TweetWithMedia = z.infer<typeof TwitterMediaSchema>;
 
 
-// Cache em memória simples para armazenar os resultados
-let cache = {
-    data: null as TwitterMediaOutput | null,
-    timestamp: 0,
-};
+// Cache em memória simples para armazenar os resultados por nome de usuário
+const cache = new Map<string, { data: TwitterMediaOutput; timestamp: number }>();
 const CACHE_DURATION_MS = 15 * 60 * 1000; // 15 minutos
 
 /**
@@ -56,11 +53,12 @@ const fetchTwitterMediaFlow = ai.defineFlow(
   async ({ username, maxResults }) => {
 
     const now = Date.now();
-    if (cache.data && (now - cache.timestamp < CACHE_DURATION_MS)) {
-        console.log("Retornando dados do cache do Twitter.");
-        return cache.data;
+    const cachedEntry = cache.get(username);
+    if (cachedEntry && (now - cachedEntry.timestamp < CACHE_DURATION_MS)) {
+        console.log(`Retornando dados do cache do Twitter para o usuário: ${username}.`);
+        return cachedEntry.data;
     }
-    console.log("Cache do Twitter expirado ou vazio. Buscando novos dados.");
+    console.log(`Cache do Twitter para ${username} expirado ou vazio. Buscando novos dados.`);
 
     const bearerToken = process.env.TWITTER_BEARER_TOKEN;
     if (!bearerToken || bearerToken === 'YOUR_TWITTER_BEARER_TOKEN') {
@@ -145,19 +143,17 @@ const fetchTwitterMediaFlow = ai.defineFlow(
 
       const result = { tweets: tweetsWithMedia };
 
-      // Atualiza o cache
-      cache = {
-          data: result,
-          timestamp: now,
-      };
+      // Atualiza o cache para o usuário específico
+      cache.set(username, { data: result, timestamp: now });
 
       return result;
 
     } catch (error: any) {
-        console.error('Erro no fluxo ao buscar feed do Twitter:', error);
-        if (cache.data) {
+        console.error(`Erro no fluxo ao buscar feed do Twitter para ${username}:`, error);
+        const cachedEntryOnError = cache.get(username);
+        if (cachedEntryOnError) {
             console.warn("Falha ao buscar novos dados do Twitter, retornando cache antigo.");
-            return cache.data;
+            return cachedEntryOnError.data;
         }
         const errorMessage = error.message || "Erro desconhecido ao acessar a API do Twitter.";
         throw new Error(`Não foi possível carregar o feed do Twitter. Motivo: ${errorMessage}`);
