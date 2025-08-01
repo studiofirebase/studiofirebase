@@ -18,6 +18,7 @@ interface MediaItem {
 export default async function PhotosPage() {
   let allPhotos: MediaItem[] = [];
   const errors: string[] = [];
+  const twitterUsername = "severepics";
 
   // Fetch from Instagram (@severepics)
   try {
@@ -42,7 +43,7 @@ export default async function PhotosPage() {
   
   // Fetch from Twitter
   try {
-    const twitterFeed = await fetchTwitterFeed({ username: "italosantosbr" });
+    const twitterFeed = await fetchTwitterFeed({ username: twitterUsername });
     const twitterPhotos = twitterFeed.tweets.flatMap((tweet: TweetWithMedia) => 
         tweet.media
             .filter(media => media.type === 'photo' && media.url)
@@ -50,7 +51,7 @@ export default async function PhotosPage() {
                 id: media.media_key,
                 text: tweet.text,
                 imageUrl: media.url!,
-                postUrl: `https://twitter.com/italosantosbr/status/${tweet.id}`,
+                postUrl: `https://twitter.com/${twitterUsername}/status/${tweet.id}`,
                 source: 'Twitter' as const,
             }))
     );
@@ -72,7 +73,7 @@ export default async function PhotosPage() {
             <Link href="https://instagram.com/severepics" target="_blank" aria-label="Instagram">
                 <Instagram className="h-6 w-6 text-muted-foreground hover:text-primary" />
             </Link>
-            <Link href="https://twitter.com/italosantosbr" target="_blank" aria-label="Twitter">
+            <Link href={`https://twitter.com/${twitterUsername}`} target="_blank" aria-label="Twitter">
               <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary" />
             </Link>
             <Upload className="h-6 w-6 text-muted-foreground" />
