@@ -23,6 +23,11 @@ export function Header() {
     { href: "/channels", label: "Canais" },
   ];
 
+  const closeSheetAndDialog = () => {
+    setIsSheetOpen(false);
+    setIsDialogOpen(false);
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
@@ -70,10 +75,10 @@ export function Header() {
                         </DialogHeader>
                         <div className="grid gap-4 py-4">
                             <Button asChild>
-                                <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
+                                <Link href="/login" onClick={closeSheetAndDialog}><User /> Acesso Cliente</Link>
                             </Button>
                             <Button asChild variant="outline">
-                                <Link href="/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                                <Link href="/admin/login" onClick={closeSheetAndDialog}><Shield/> Acesso ADM</Link>
                             </Button>
                         </div>
                       </DialogContent>
@@ -120,7 +125,7 @@ export function Header() {
                         <Link href="/login" onClick={() => setIsDialogOpen(false)}><User /> Acesso Cliente</Link>
                     </Button>
                     <Button asChild variant="outline">
-                        <Link href="/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
+                        <Link href="/admin/login" onClick={() => setIsDialogOpen(false)}><Shield/> Acesso ADM</Link>
                     </Button>
                 </div>
               </DialogContent>
