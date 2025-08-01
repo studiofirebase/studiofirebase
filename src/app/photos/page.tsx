@@ -21,7 +21,7 @@ export default async function PhotosPage() {
 
   // Fetch from Twitter
   try {
-    const twitterFeed = await fetchTwitterFeed({ username: "italosantosbr" });
+    const twitterFeed = await fetchTwitterFeed({ username: "italoosantos" });
     const twitterPhotos = twitterFeed.tweets.flatMap((tweet: TweetWithMedia) => 
         tweet.media
             .filter(media => media.type === 'photo' && media.url)
