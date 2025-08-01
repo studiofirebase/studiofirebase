@@ -4,7 +4,6 @@ import Image from "next/image";
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -34,11 +33,6 @@ export function ContentCard({ content, priority = false }: ContentCardProps) {
         <CardContent className="flex-grow p-4">
             {/* Content removed as requested */}
         </CardContent>
-        <CardFooter className="p-4 pt-0 mt-auto flex justify-end">
-            <Button variant="outline" size="sm" asChild>
-                <span className="z-10">Ver Detalhes</span>
-            </Button>
-        </CardFooter>
       </Link>
     </Card>
   );
