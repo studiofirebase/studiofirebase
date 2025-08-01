@@ -5,7 +5,7 @@ import {
     MessageSquare, 
     Users, 
     Package, 
-    Image as ImageIcon, 
+    ImageIcon, 
     Film, 
     Upload, 
     GitMerge, 
@@ -59,7 +59,7 @@ const adminFeatures = [
     {
         icon: Star,
         title: "Avaliações",
-        description: "Modere as avaliações de produtos e conteúdos.",
+        description: "Modere os comentários e avaliações que aguardam aprovação.",
         buttonText: "Ver Avaliações"
     },
     {
