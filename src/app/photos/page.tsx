@@ -1,12 +1,37 @@
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Twitter, Instagram, Upload } from "lucide-react";
-import { getLatestTweetsWithImages } from "@/services/twitter";
+import { fetchTwitterFeed, TweetWithMedia } from "@/ai/flows/twitter-feed-flow";
 import Image from "next/image";
 import Link from "next/link";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
+
+interface MediaItem {
+  id: string;
+  text: string;
+  imageUrl: string;
+  tweetUrl: string;
+}
 
 export default async function PhotosPage() {
-  const tweets = await getLatestTweetsWithImages('italosantosbr');
+  let photos: MediaItem[] = [];
+  let error: string | null = null;
+
+  try {
+    const feed = await fetchTwitterFeed({ username: "italosantosbr" });
+    photos = feed.tweets.flatMap((tweet: TweetWithMedia) => 
+        tweet.media
+            .filter(media => media.type === 'photo' && media.url)
+            .map(media => ({
+                id: media.media_key,
+                text: tweet.text,
+                imageUrl: media.url!,
+                tweetUrl: `https://twitter.com/italosantosbr/status/${tweet.id}`
+            }))
+    );
+  } catch (e: any) {
+    error = e.message || "An unexpected error occurred.";
+  }
 
   return (
     <div className="container py-16 md:py-24">
@@ -26,22 +51,42 @@ export default async function PhotosPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {tweets.map((tweet) => (
-          <Card key={tweet.id} className="overflow-hidden group cursor-pointer">
-            <Link href={`https://twitter.com/italosantosbr/status/${tweet.id}`} target="_blank">
-                <CardContent className="p-0">
-                <div className="relative aspect-video">
-                    <Image src={tweet.imageUrl} alt={tweet.text} className="w-full h-full object-cover transition-transform group-hover:scale-105" fill />
-                </div>
-                <div className="p-4">
-                    <p className="text-muted-foreground">{tweet.text}</p>
-                </div>
-                </CardContent>
-            </Link>
-          </Card>
-        ))}
-      </div>
+      {error && (
+        <Alert variant="destructive" className="mb-8">
+          <Terminal className="h-4 w-4" />
+          <AlertTitle>Erro ao Carregar Fotos</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+
+      {photos.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {photos.map((photo) => (
+            <Card key={photo.id} className="overflow-hidden group cursor-pointer">
+              <Link href={photo.tweetUrl} target="_blank" rel="noopener noreferrer">
+                  <CardContent className="p-0">
+                  <div className="relative aspect-square">
+                      {photo.imageUrl && (
+                        <Image 
+                            src={photo.imageUrl} 
+                            alt={photo.text} 
+                            className="w-full h-full object-cover transition-transform group-hover:scale-105" 
+                            fill 
+                            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            priority={false}
+                        />
+                      )}
+                  </div>
+                  </CardContent>
+              </Link>
+            </Card>
+          ))}
+        </div>
+      ) : !error && (
+         <div className="text-center py-8 text-muted-foreground">
+            <p>Nenhuma foto encontrada no feed do Twitter.</p>
+         </div>
+      )}
     </div>
   );
 }
