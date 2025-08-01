@@ -103,13 +103,13 @@ export default function Home() {
 
                  <div className="mt-8 text-center">
                     {/* O preço será editável no painel ADM */}
-                    <span className="text-6xl font-bold text-primary">{price}</span>
+                    <span className="text-6xl font-bold neon-gold-text">{price}</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
                       <DialogTrigger asChild>
-                         <Button size="lg" className="w-1/2" variant="destructive">Entrar</Button>
+                         <Button size="lg" className="w-1/2" variant="default">Entrar</Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>

@@ -48,6 +48,7 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
+        gold: 'hsl(var(--gold))',
         chart: {
           '1': 'hsl(var(--chart-1))',
           '2': 'hsl(var(--chart-2))',
@@ -78,10 +79,15 @@ export default {
             height: '0',
           },
         },
+        'neon-blink': {
+          '0%, 100%': { opacity: '1', textShadow: '0 0 5px hsl(var(--gold)), 0 0 10px hsl(var(--gold))' },
+          '50%': { opacity: '0.7', textShadow: '0 0 10px hsl(var(--gold)), 0 0 20px hsl(var(--gold))' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'neon-blink': 'neon-blink 1.5s infinite alternate',
       },
     },
   },
