@@ -43,15 +43,10 @@ export function ContentCard({ content, priority = false }: ContentCardProps) {
             {content.description}
           </CardDescription>
         </CardContent>
-        <CardFooter className="p-4 md:p-6 pt-0 mt-auto">
-          <div className="w-full flex justify-between items-center">
-            <p className="text-lg font-bold text-primary">
-              R${content.price.toFixed(2).replace('.',',')}
-            </p>
+        <CardFooter className="p-4 md:p-6 pt-0 mt-auto flex justify-end">
             <Button variant="outline" size="sm" asChild>
                 <span className="z-10">Ver Detalhes</span>
             </Button>
-          </div>
         </CardFooter>
       </Link>
     </Card>
