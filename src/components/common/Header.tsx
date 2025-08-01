@@ -82,6 +82,7 @@ export function Header() {
     { href: "/store", label: "Loja" },
     { href: "/subscriptions", label: "Assinatura" },
     { href: "/channels", label: "Canais" },
+    { href: "/fetish-bdsm", label: "FETISH & BDSM" },
   ];
 
   const closeSheetAndDialog = () => {
@@ -109,54 +110,62 @@ export function Header() {
                         </span>
                     </Link>
                     <nav className="grid gap-2">
-                         <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value="item-1" className="border-b-0">
-                            <AccordionTrigger className="py-1 -mx-2 px-2 rounded hover:bg-muted/50 hover:no-underline text-foreground/80 hover:text-foreground transition-colors">FETISH & BDSM</AccordionTrigger>
-                            <AccordionContent className="pl-2">
-                               <Accordion type="multiple" className="w-full">
-                                {fetishData.map((category) => (
-                                    <AccordionItem value={category.title} key={category.title} className="border-b-0">
-                                        <AccordionTrigger className="py-1 -mx-2 px-2 rounded text-sm hover:bg-muted/50 hover:no-underline text-foreground/60 hover:text-foreground/80 transition-colors">
-                                            {category.title}
-                                        </AccordionTrigger>
-                                        <AccordionContent className="pl-4 pt-1">
-                                            <div className="flex flex-col gap-1 text-foreground/60">
-                                                {category.items.map((item) => (
-                                                    <Dialog key={item.id}>
-                                                        <DialogTrigger asChild>
-                                                            <Button variant="ghost" className="justify-start text-left h-auto py-1 text-sm -mx-2 px-2" onClick={(e) => e.preventDefault()}>{item.title}</Button>
-                                                        </DialogTrigger>
-                                                        <DialogContent>
-                                                            <DialogHeader>
-                                                                <DialogTitle className="font-headline text-2xl text-primary">{item.title}</DialogTitle>
-                                                                <DialogDescription className="pt-4 text-base">
-                                                                    {item.description}
-                                                                </DialogDescription>
-                                                            </DialogHeader>
-                                                        </DialogContent>
-                                                    </Dialog>
-                                                ))}
-                                            </div>
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                               </Accordion>
-                            </AccordionContent>
-                          </AccordionItem>
-                        </Accordion>
-                        {navLinks.map((link) => (
-                          <SheetClose asChild key={link.href}>
-                            <Link
-                              href={link.href}
-                              className={cn(
-                                "transition-colors -mx-2 px-2 py-1 rounded hover:bg-muted/50",
-                                pathname === link.href ? "text-foreground" : "text-foreground/60"
-                              )}
-                            >
-                              {link.label}
-                            </Link>
-                          </SheetClose>
-                        ))}
+                        {navLinks.map((link) => {
+                            if (link.href === "/fetish-bdsm") {
+                                return (
+                                    <Accordion type="single" collapsible className="w-full" key={link.href}>
+                                        <AccordionItem value="item-1" className="border-b-0">
+                                            <AccordionTrigger className="py-1 -mx-2 px-2 rounded hover:bg-muted/50 hover:no-underline text-foreground/80 hover:text-foreground transition-colors">
+                                                {link.label}
+                                            </AccordionTrigger>
+                                            <AccordionContent className="pl-2">
+                                                <Accordion type="multiple" className="w-full">
+                                                    {fetishData.map((category) => (
+                                                        <AccordionItem value={category.title} key={category.title} className="border-b-0">
+                                                            <AccordionTrigger className="py-1 -mx-2 px-2 rounded text-sm hover:bg-muted/50 hover:no-underline text-foreground/60 hover:text-foreground/80 transition-colors">
+                                                                {category.title}
+                                                            </AccordionTrigger>
+                                                            <AccordionContent className="pl-4 pt-1">
+                                                                <div className="flex flex-col gap-1 text-foreground/60">
+                                                                    {category.items.map((item) => (
+                                                                        <Dialog key={item.id}>
+                                                                            <DialogTrigger asChild>
+                                                                                <Button variant="ghost" className="justify-start text-left h-auto py-1 text-sm -mx-2 px-2" onSelect={(e) => e.preventDefault()}>{item.title}</Button>
+                                                                            </DialogTrigger>
+                                                                            <DialogContent>
+                                                                                <DialogHeader>
+                                                                                    <DialogTitle className="font-headline text-2xl text-primary">{item.title}</DialogTitle>
+                                                                                    <DialogDescription className="pt-4 text-base">
+                                                                                        {item.description}
+                                                                                    </DialogDescription>
+                                                                                </DialogHeader>
+                                                                            </DialogContent>
+                                                                        </Dialog>
+                                                                    ))}
+                                                                </div>
+                                                            </AccordionContent>
+                                                        </AccordionItem>
+                                                    ))}
+                                                </Accordion>
+                                            </AccordionContent>
+                                        </AccordionItem>
+                                    </Accordion>
+                                )
+                            }
+                            return (
+                              <SheetClose asChild key={link.href}>
+                                <Link
+                                  href={link.href}
+                                  className={cn(
+                                    "transition-colors -mx-2 px-2 py-1 rounded hover:bg-muted/50",
+                                    pathname === link.href ? "text-foreground" : "text-foreground/60"
+                                  )}
+                                >
+                                  {link.label}
+                                </Link>
+                              </SheetClose>
+                            )
+                        })}
                     </nav>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
@@ -191,19 +200,23 @@ export function Header() {
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <FetishMenu />
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "transition-colors hover:text-foreground/80",
-                pathname === link.href ? "text-foreground" : "text-foreground/60"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+             if (link.href === "/fetish-bdsm") {
+                return <FetishMenu key={link.href} />;
+              }
+            return (
+                <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                    "transition-colors hover:text-foreground/80",
+                    pathname === link.href ? "text-foreground" : "text-foreground/60"
+                )}
+                >
+                {link.label}
+                </Link>
+            )
+          })}
         </nav>
         <div className="flex items-center gap-4">
            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
