@@ -4,9 +4,10 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { MessageCircle, Send, X } from 'lucide-react';
+import { MessageCircle, Send, X, Paperclip, MapPin, Image as ImageIcon, Mic, Video, Phone } from 'lucide-react';
 import { ScrollArea } from '../ui/scroll-area';
 import { cn } from '@/lib/utils';
+import { Separator } from '../ui/separator';
 
 interface Message {
     id: number;
@@ -70,10 +71,16 @@ export function ChatWidget() {
             <Card className="w-80 shadow-2xl">
                 <CardHeader className="flex flex-row items-center justify-between bg-primary text-primary-foreground p-4 rounded-t-lg">
                     <CardTitle className="text-lg">Fale Conosco</CardTitle>
-                    <Button variant="ghost" size="icon" onClick={toggleChat} className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground">
-                        <X className="h-5 w-5" />
-                        <span className="sr-only">Fechar Chat</span>
-                    </Button>
+                    <div className="flex items-center">
+                        <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground">
+                            <Phone className="h-5 w-5" />
+                            <span className="sr-only">Fazer ligação de vídeo</span>
+                        </Button>
+                        <Button variant="ghost" size="icon" onClick={toggleChat} className="text-primary-foreground hover:bg-primary/80 hover:text-primary-foreground">
+                            <X className="h-5 w-5" />
+                            <span className="sr-only">Fechar Chat</span>
+                        </Button>
+                    </div>
                 </CardHeader>
                 <CardContent className="p-0">
                     <ScrollArea className="h-80 p-4" ref={scrollAreaRef}>
@@ -92,14 +99,23 @@ export function ChatWidget() {
                         </div>
                     </ScrollArea>
                 </CardContent>
-                <CardFooter className="p-4 border-t">
-                    <form onSubmit={handleSendMessage} className="flex w-full gap-2">
+                <CardFooter className="p-2 border-t flex-col">
+                    <div className="flex w-full justify-around py-2">
+                        <Button variant="ghost" size="icon"><Paperclip className="h-5 w-5" /></Button>
+                        <Button variant="ghost" size="icon"><MapPin className="h-5 w-5" /></Button>
+                        <Button variant="ghost" size="icon"><ImageIcon className="h-5 w-5" /></Button>
+                        <Button variant="ghost" size="icon"><Mic className="h-5 w-5" /></Button>
+                        <Button variant="ghost" size="icon"><Video className="h-5 w-5" /></Button>
+                    </div>
+                    <Separator />
+                    <form onSubmit={handleSendMessage} className="flex w-full gap-2 pt-2">
                         <Input 
                             placeholder="Digite sua mensagem..." 
                             value={inputValue}
                             onChange={(e) => setInputValue(e.target.value)}
+                            className="bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                         />
-                        <Button type="submit" size="icon">
+                        <Button type="submit" size="icon" variant="ghost">
                             <Send />
                             <span className="sr-only">Enviar</span>
                         </Button>
