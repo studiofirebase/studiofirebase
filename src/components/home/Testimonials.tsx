@@ -1,5 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { Star } from "lucide-react";
 
 const testimonials = [
@@ -30,6 +37,20 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const [newReview, setNewReview] = useState("");
+  const [newName, setNewName] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newName && newReview) {
+      console.log("Nova avaliação:", { name: newName, review: newReview });
+      // Aqui, futuramente, a avaliação seria enviada para moderação
+      setNewName("");
+      setNewReview("");
+    }
+  };
+
+
   return (
     <section className="py-16 md:py-24 bg-card border-y">
       <div className="container">
@@ -63,6 +84,45 @@ export function Testimonials() {
             </Card>
           ))}
         </div>
+        
+        <div className="mt-16 max-w-2xl mx-auto">
+          <h3 className="font-headline text-2xl md:text-3xl text-center mb-8">
+            Deixe sua Avaliação
+          </h3>
+          <Card>
+            <CardContent className="p-6">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Seu Nome</Label>
+                  <Input
+                    id="name"
+                    placeholder="Ex: João Silva"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="review">Sua Avaliação</Label>
+                  <Textarea
+                    id="review"
+                    placeholder="Conte-nos o que você achou..."
+                    value={newReview}
+                    onChange={(e) => setNewReview(e.target.value)}
+                    required
+                  />
+                </div>
+                <Button type="submit" className="w-full">
+                  Enviar para Moderação
+                </Button>
+                 <p className="text-xs text-center text-muted-foreground">
+                    Sua avaliação será enviada para moderação antes de ser publicada.
+                </p>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+
       </div>
     </section>
   );
