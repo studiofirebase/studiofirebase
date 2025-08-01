@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="py-20 md:py-32 bg-card border-b">
+      <section className="py-20 md:py-32 bg-card border-t border-b">
         <div className="container text-center">
           <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter text-primary leading-tight">
             Os Melhores Hambúrgueres da Cidade
