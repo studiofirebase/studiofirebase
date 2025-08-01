@@ -128,33 +128,43 @@ const fetishCategories = [
 
 
 const FetishMenu = () => (
-  <DropdownMenu>
-    <DropdownMenuTrigger asChild>
-      <Button variant="ghost" className="text-foreground/60 hover:text-foreground/80 transition-colors">
-        FETISH & BDSM
-        <ChevronDown className="relative top-[1px] ml-1 h-3 w-3" />
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent className="w-56">
-      <DropdownMenuLabel>Categorias</DropdownMenuLabel>
-      <DropdownMenuSeparator />
-      {fetishCategories.map((category) => (
-         <DropdownMenuSub key={category.title}>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="text-foreground/60 hover:text-foreground/80 transition-colors">
+          FETISH & BDSM
+          <ChevronDown className="relative top-[1px] ml-1 h-3 w-3" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-56">
+        <DropdownMenuLabel>Categorias</DropdownMenuLabel>
+        <DropdownMenuSeparator />
+        {fetishCategories.map((category) => (
+          <DropdownMenuSub key={category.title}>
             <DropdownMenuSubTrigger>{category.title}</DropdownMenuSubTrigger>
-             <DropdownMenuPortal>
-                <DropdownMenuSubContent>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
                 {category.items.map((item) => (
-                    <Link href="/fetish-bdsm" key={item}>
-                        <DropdownMenuItem>{item}</DropdownMenuItem>
-                    </Link>
+                  <Dialog key={item}>
+                    <DialogTrigger asChild>
+                      <DropdownMenuItem onSelect={(e) => e.preventDefault()}>{item}</DropdownMenuItem>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle className="font-headline text-2xl text-primary">{item}</DialogTitle>
+                        <DialogDescription className="pt-4 text-base">
+                          Aqui virá a descrição detalhada sobre a prática de {item}. Este texto poderá ser editado futuramente para fornecer mais informações.
+                        </DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
                 ))}
-                </DropdownMenuSubContent>
-             </DropdownMenuPortal>
-         </DropdownMenuSub>
-      ))}
-    </DropdownMenuContent>
-  </DropdownMenu>
-);
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 
 
 export function Header() {
@@ -209,7 +219,19 @@ export function Header() {
                                         <AccordionContent className="pl-4 pt-1">
                                             <div className="flex flex-col gap-1 text-foreground/60">
                                                 {category.items.map((item) => (
-                                                    <span key={item} className="text-sm py-1">{item}</span>
+                                                    <Dialog key={item}>
+                                                        <DialogTrigger asChild>
+                                                            <Button variant="ghost" className="justify-start text-left h-auto py-1 text-sm -mx-2 px-2" onSelect={(e) => e.preventDefault()}>{item}</Button>
+                                                        </DialogTrigger>
+                                                        <DialogContent>
+                                                            <DialogHeader>
+                                                                <DialogTitle className="font-headline text-2xl text-primary">{item}</DialogTitle>
+                                                                <DialogDescription className="pt-4 text-base">
+                                                                Aqui virá a descrição detalhada sobre a prática de {item}. Este texto poderá ser editado futuramente para fornecer mais informações.
+                                                                </DialogDescription>
+                                                            </DialogHeader>
+                                                        </DialogContent>
+                                                    </Dialog>
                                                 ))}
                                             </div>
                                         </AccordionContent>
@@ -307,5 +329,3 @@ export function Header() {
     </header>
   );
 }
-
-    
