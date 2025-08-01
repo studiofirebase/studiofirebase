@@ -610,11 +610,8 @@ export function Testimonials() {
       <div className="container">
         <div className="text-center">
           <h2 className="font-headline text-3xl md:text-4xl">
-            O que nossos clientes dizem
+            COMENTARIOS
           </h2>
-          <p className="mx-auto max-w-2xl mt-4 text-muted-foreground">
-            Opiniões reais de quem já provou e aprovou nossos sabores.
-          </p>
         </div>
         <div className="grid grid-cols-1 gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((testimonial, index) => (
