@@ -21,6 +21,12 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuPortal,
 } from "@/components/ui/dropdown-menu";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const fetishCategories = [
   {
@@ -190,11 +196,20 @@ export function Header() {
                         </span>
                     </Link>
                     <nav className="grid gap-2">
-                        <SheetClose asChild>
-                           <Link href="/fetish-bdsm" className={cn("transition-colors -mx-2 px-2 py-1 rounded hover:bg-accent/10", pathname === "/fetish-bdsm" ? "text-foreground" : "text-foreground/60")}>
-                                FETISH & BDSM
-                            </Link>
-                        </SheetClose>
+                         <Accordion type="single" collapsible className="w-full">
+                          <AccordionItem value="item-1" className="border-b-0">
+                            <AccordionTrigger className="py-1 -mx-2 px-2 rounded hover:bg-accent/10 hover:no-underline text-foreground/60 hover:text-foreground/80 transition-colors">FETISH & BDSM</AccordionTrigger>
+                            <AccordionContent className="pl-4">
+                               <div className="flex flex-col gap-1 mt-1">
+                                {fetishCategories.map((category) => (
+                                    <SheetClose asChild key={category.title}>
+                                      <Link href="/fetish-bdsm" className="block transition-colors -mx-2 px-2 py-1 rounded hover:bg-accent/10 text-foreground/60">{category.title}</Link>
+                                    </SheetClose>
+                                ))}
+                               </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
                         {navLinks.map((link) => (
                           <SheetClose asChild key={link.href}>
                             <Link
@@ -213,7 +228,7 @@ export function Header() {
                       <DialogTrigger asChild>
                          <Button variant="default">Entrar</Button>
                       </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px]">
+                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
                           <DialogTitle>Escolha o tipo de acesso</DialogTitle>
                           <DialogDescription>
@@ -283,3 +298,5 @@ export function Header() {
     </header>
   );
 }
+
+    
