@@ -31,15 +31,7 @@ export default function Home() {
           <p className="mx-auto max-w-[700px] text-lg text-muted-foreground mt-4">
             Descubra um mundo de sabores únicos, criações artesanais e os hambúrgueres mais suculentos que você já provou.
           </p>
-          <div className="mt-8 flex justify-center gap-4">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-              <Link href="/subscriptions">Clube do Hambúrguer</Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="#featured-content">Ver Cardápio</Link>
-            </Button>
-          </div>
-            <div className="mt-8 flex flex-col items-center gap-4">
+          <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
                     <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
                     <div>
