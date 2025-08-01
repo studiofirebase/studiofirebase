@@ -149,7 +149,7 @@ Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores
       <section className="py-16 md:py-24 container">
         <div className="text-center mb-12">
             <h2 className="font-headline text-4xl md:text-5xl">SOBRE</h2>
-            <div className="mx-auto max-w-2xl mt-4 text-muted-foreground whitespace-pre-wrap">
+            <div className="mx-auto max-w-2xl mt-4 text-muted-foreground">
               <p className="mb-4">
                 <span className="text-primary font-bold">Características Físicas</span>
                 <br />
