@@ -116,12 +116,13 @@ export default function Home() {
                     <Button asChild variant="default" className="w-full" size="lg">
                         <Link href="/facial-login"><ScanFace className="mr-2"/> Face ID</Link>
                     </Button>
-                    <div className="grid grid-cols-3 gap-2">
-                         <Button variant="outline-social" className="w-full neon-border-primary"><GoogleIcon /> Google</Button>
-                         <Button asChild className="w-full" variant="default">
-                            <Link href="/login">Pix</Link>
-                        </Button>
-                        <Button variant="outline-social" className="w-full neon-border-primary"><AppleIcon /> Apple</Button>
+                    <div className="grid grid-cols-2 gap-2">
+                         <Button variant="outline-social" className="w-full neon-border-primary p-0">
+                            <Image src="https://firebasestorage.googleapis.com/v0/b/facepass-afhid.firebasestorage.app/o/5B7EDA01-048A-43C5-BBFA-551FE761A908_4_5005_c.jpeg?alt=media&token=e9825787-4fcf-4197-af4f-eeeb799bb786" alt="Pague com Google" width={100} height={40} className="h-10 w-auto"/>
+                         </Button>
+                         <Button variant="outline-social" className="w-full neon-border-primary p-0">
+                            <Image src="https://firebasestorage.googleapis.com/v0/b/facepass-afhid.firebasestorage.app/o/BE9C2063-A1F3-4EA2-AF55-EF774A0D7B94_4_5005_c.jpeg?alt=media&token=943ae02b-c34f-4197-af4f-eeeb799bb786" alt="Pague com Apple" width={100} height={40} className="h-10 w-auto"/>
+                         </Button>
                     </div>
                 </div>
 
@@ -131,7 +132,9 @@ export default function Home() {
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
-                    <Button size="lg" className="w-full" variant="default">Entrar</Button>
+                    <Button asChild size="lg" className="w-full" variant="default">
+                        <Link href="/login">Entrar</Link>
+                    </Button>
                 </div>
             </div>
         </div>

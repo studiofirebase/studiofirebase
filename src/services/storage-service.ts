@@ -69,3 +69,20 @@ export async function uploadMedia({ fileBase64, fileName, category }: UploadMedi
     throw new Error(`Failed to upload ${fileName}. Reason: ${error.message}`);
   }
 }
+
+/**
+ * Lists media files from a specified prefix in Firebase Storage.
+ * @param {string} prefix - The prefix (folder path) to list files from.
+ * @returns {Promise<string[]>} A promise that resolves with an array of public URLs.
+ */
+export async function listMedia(prefix: string): Promise<string[]> {
+  try {
+    const [files] = await bucket.getFiles({ prefix: prefix });
+    const urls = files.map(file => file.publicUrl());
+    console.log(`Listed ${urls.length} files from ${prefix}`);
+    return urls;
+  } catch (error: any) {
+    console.error(`Error listing media from ${prefix}:`, error);
+    throw new Error(`Failed to list media from ${prefix}. Reason: ${error.message}`);
+  }
+}
