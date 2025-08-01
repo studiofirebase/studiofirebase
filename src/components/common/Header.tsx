@@ -14,10 +14,8 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/#featured-content", label: "Cardápio" },
     { href: "/videos", label: "Vídeos" },
     { href: "/store", label: "Loja" },
-    { href: "/subscriptions", label: "Clube do Hambúrguer" },
   ];
 
   return (
