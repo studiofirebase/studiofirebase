@@ -68,3 +68,14 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+@layer utilities {
+    .btn-neon-primary:hover {
+        box-shadow: 0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary));
+        transition: box-shadow 0.3s ease-in-out;
+    }
+    .btn-neon-accent:hover {
+        box-shadow: 0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent));
+        transition: box-shadow 0.3s ease-in-out;
+    }
+}

@@ -7,7 +7,7 @@ import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
-import { Apple, CreditCard, User, Shield, ScanFace } from "lucide-react";
+import { CreditCard, User, Shield, ScanFace } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { LocationMap } from "@/components/home/LocationMap";
@@ -18,6 +18,14 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
     </svg>
 );
+
+const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" {...props}>
+        <path d="M16.125 10.875c0-2.438-1.5-3.75-3.375-3.75-1.5 0-3.375 1.125-4.5 3-2.625.25-4.5 2.125-4.5 4.875 0 2.875 2.25 5.25 5.25 5.25.75 0 1.5-.25 2.25-.5 1 .25 2.25.5 3.375.5 3 0 5.25-2.25 5.25-5.25-.001-1.625-.876-3.125-2.251-4.125zm-6.375-2.625c.875-1.125 2-1.875 3-1.875s1.875.625 2.625 1.5c-.75.875-1.875 1.5-2.875 1.5s-1.875-.75-2.75-1.125z"/>
+    </svg>
+);
+
+
 
 export default function Home() {
   const allContent = getAllContent();
@@ -85,11 +93,11 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
-                    <Button variant="default" className="w-full bg-accent hover:bg-accent/90"><ScanFace className="mr-2"/> Face ID</Button>
+                    <Button variant="destructive" className="w-full"><ScanFace className="mr-2"/> Face ID</Button>
                     <div className="grid grid-cols-3 gap-2">
                         <Button variant="outline"><GoogleIcon /> Google</Button>
                         <Button variant="outline"><CreditCard /> Pix</Button>
-                        <Button variant="outline"><Apple /> Apple</Button>
+                        <Button variant="outline"><AppleIcon /> Apple</Button>
                     </div>
                 </div>
 
