@@ -93,11 +93,17 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
-                    <Button variant="default" className="w-full" size="lg"><ScanFace className="mr-2"/> Face ID</Button>
-                    <div className="grid grid-cols-3 gap-2">
-                        <Button variant="outline"><GoogleIcon /> Google</Button>
-                        <Button variant="outline"><CreditCard /> Pix</Button>
-                        <Button variant="outline"><AppleIcon /> Apple</Button>
+                    <Button asChild variant="default" className="w-full" size="lg">
+                        <Link href="/login"><ScanFace className="mr-2"/> Face ID</Link>
+                    </Button>
+                    <div className="grid grid-cols-2 gap-2">
+                        <Button asChild size="lg" className="w-full" variant="default">
+                            <Link href="/login">Entrar</Link>
+                        </Button>
+                        <div className="grid grid-cols-2 gap-2">
+                            <Button variant="outline" size="lg"><GoogleIcon /> Google</Button>
+                            <Button variant="outline" size="lg"><AppleIcon /> Apple</Button>
+                        </div>
                     </div>
                 </div>
 
@@ -109,7 +115,7 @@ export default function Home() {
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
                       <DialogTrigger asChild>
-                         <Button size="lg" className="w-full" variant="default">Entrar</Button>
+                         <Button size="lg" className="w-full" variant="default">Assinar Agora</Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
@@ -159,3 +165,4 @@ export default function Home() {
     </>
   );
 }
+
