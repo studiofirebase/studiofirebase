@@ -14,6 +14,7 @@ if (adminCredentials) {
   try {
     const serviceAccount = JSON.parse(adminCredentials);
     if (serviceAccount.private_key) {
+      // Garante que as quebras de linha na chave privada sejam interpretadas corretamente.
       serviceAccount.private_key = serviceAccount.private_key.replace(/\\n/g, '\n');
     }
 
