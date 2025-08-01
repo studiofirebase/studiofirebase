@@ -36,13 +36,13 @@ const Marquee = () => {
             <div className="animate-marquee whitespace-nowrap flex">
                 {marqueeItems.map((item, index) => (
                     <div key={index} className="marquee-item">
-                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <CheckCircle className="h-5 w-5 text-primary neon-white-text" />
                         <span className="text-lg font-semibold">{item}</span>
                     </div>
                 ))}
                  {marqueeItems.map((item, index) => (
                     <div key={`dup-${index}`} className="marquee-item" aria-hidden="true">
-                        <CheckCircle className="h-5 w-5 text-accent" />
+                        <CheckCircle className="h-5 w-5 text-primary neon-white-text" />
                         <span className="text-lg font-semibold">{item}</span>
                     </div>
                 ))}
@@ -69,13 +69,6 @@ export default function Home() {
 
   // Futuramente, estes valores virão do painel de administração
   const siteName = "Italo Santos";
-  const presentationText = `1,69m de altura e 70kg com cabelo castanho claro corpo atlético magro definido um dote de 20cm.
-
-Fetichista elite. Costumo dizer isso pois para meus servos o cachê que pagam indiferente em suas vidas.
-
-Independentemente do status social trato todos igualmente mesmo aqueles que só possam ter o prazer de desfrutar da minha companhia uma vez ao mês.
-
-Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores fantasias sexuais.`;
   const price = "99,00";
 
 
