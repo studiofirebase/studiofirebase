@@ -48,10 +48,10 @@ export default function Home() {
                     <span className="text-6xl font-bold text-primary">99,00</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 w-full max-w-sm mx-auto">
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
-                         <Button size="lg">Entrar</Button>
+                         <Button size="lg" className="w-1/2">Entrar</Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
