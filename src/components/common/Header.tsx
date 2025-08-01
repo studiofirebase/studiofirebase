@@ -27,104 +27,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const fetishCategories = [
-  {
-    title: "Dirty",
-    items: [
-      "Urinolagnia (Wetlook, Golden Shower)",
-      "Scat (Coprophilia)",
-      "Olfactofilia (Fetiche por Cheiros)",
-      "Omorashi (Incontinência Controlada)",
-      "Pissing (Urinar)",
-      "Podolatria (Fetiche por Pés)",
-      "Salirophilia (Salirofilia)",
-      "Ass-to-Mouth (ATM)",
-    ],
-  },
-  {
-    title: "Leather/Latex",
-    items: [
-      "Látex e Couro (Leather & Latex)",
-      "Leather (Couro)",
-      "Clothed Sex (Sexo com Roupa)",
-    ],
-  },
-  {
-    title: "Fantasy",
-    items: [
-      "Cenoura-Play",
-      "Daddy/Boy",
-      "Adult Nursing (Enfermagem Adulta)",
-      "Hirsutofilia (Fetiche por Cabelo Corporal)",
-      "Clamping (Clamp & Squeeze)",
-      "Feederism (Fetiche por Alimentação/Engorda)",
-      "Tickling (Cócegas)",
-    ],
-  },
-  {
-    title: "Dominação e Submissão",
-    items: [
-      "Candle Wax Play",
-      "Military Play",
-      "Pet Play",
-      "Butt Plug Play",
-      "Medical Play",
-      "Ass Play (Jogo Anal)",
-      "Gender Play",
-      "Role Play (Jogo de Papéis)",
-      "Diaper Play (Jogo de Fraldas)",
-      "Furry Play",
-    ],
-  },
-  {
-    title: "Sadomasoquismo",
-    items: [
-      "Master/Slave",
-      "Anal Hook",
-      "Spanking (Palmadas)",
-      "Nipple Torture (Tortura de Mamilos)",
-      "Tease and Denial (Provocação e Negação)",
-      "Sounding",
-      "Asfixiofilia (Breath Play)",
-      "CBT (Cock and Ball Torture)",
-    ],
-  },
-  {
-    title: "Fetiche Interracial",
-    items: [
-      "Super-Herói",
-      "Inch-High (Gigantes e Pequeninos)",
-      "Barber Fetish (Barbeiro)",
-      "Armpit Fetish (Axilas)",
-      "Inflatable Suit Fetish (Traje Inflável)",
-      "Body Hair Fetish (Pelos Corporais)",
-    ],
-  },
-  {
-    title: "Sissy/Crossdresser",
-    items: ["Sissy", "Sissy / Drag"],
-  },
-  {
-    title: "Sex",
-    items: [
-      "Cuckolding",
-      "Oral Worship (Adoração Oral)",
-      "Rimming (Anilingus)",
-      "Voyeurismo",
-      "Garganta Profunda (Deepthroat)",
-      "DP (Double Penetration)",
-    ],
-  },
-  {
-    title: "Mumification/Shibari",
-    items: ["Bondage", "Shibari (Bondage Japonês)", "Hogtie"],
-  },
-  {
-    title: "Outros",
-    items: ["Findom (Dominação Financeira)", "Enema Play (Jogo de Enema)"],
-  },
-];
+import { fetishData } from "@/lib/fetishes";
 
 
 const FetishMenu = () => (
@@ -138,21 +41,21 @@ const FetishMenu = () => (
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Categorias</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {fetishCategories.map((category) => (
+        {fetishData.map((category) => (
           <DropdownMenuSub key={category.title}>
             <DropdownMenuSubTrigger>{category.title}</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
                 {category.items.map((item) => (
-                  <Dialog key={item}>
+                  <Dialog key={item.id}>
                     <DialogTrigger asChild>
-                      <DropdownMenuItem onSelect={(e) => e.preventDefault()}>{item}</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={(e) => e.preventDefault()}>{item.title}</DropdownMenuItem>
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle className="font-headline text-2xl text-primary">{item}</DialogTitle>
+                        <DialogTitle className="font-headline text-2xl text-primary">{item.title}</DialogTitle>
                         <DialogDescription className="pt-4 text-base">
-                          Aqui virá a descrição detalhada sobre a prática de {item}. Este texto poderá ser editado futuramente para fornecer mais informações.
+                          {item.description}
                         </DialogDescription>
                       </DialogHeader>
                     </DialogContent>
@@ -211,7 +114,7 @@ export function Header() {
                             <AccordionTrigger className="py-1 -mx-2 px-2 rounded hover:bg-muted/50 hover:no-underline text-foreground/80 hover:text-foreground transition-colors">FETISH & BDSM</AccordionTrigger>
                             <AccordionContent className="pl-2">
                                <Accordion type="multiple" className="w-full">
-                                {fetishCategories.map((category) => (
+                                {fetishData.map((category) => (
                                     <AccordionItem value={category.title} key={category.title} className="border-b-0">
                                         <AccordionTrigger className="py-1 -mx-2 px-2 rounded text-sm hover:bg-muted/50 hover:no-underline text-foreground/60 hover:text-foreground/80 transition-colors">
                                             {category.title}
@@ -219,15 +122,15 @@ export function Header() {
                                         <AccordionContent className="pl-4 pt-1">
                                             <div className="flex flex-col gap-1 text-foreground/60">
                                                 {category.items.map((item) => (
-                                                    <Dialog key={item}>
+                                                    <Dialog key={item.id}>
                                                         <DialogTrigger asChild>
-                                                            <Button variant="ghost" className="justify-start text-left h-auto py-1 text-sm -mx-2 px-2" onSelect={(e) => e.preventDefault()}>{item}</Button>
+                                                            <Button variant="ghost" className="justify-start text-left h-auto py-1 text-sm -mx-2 px-2" onClick={(e) => e.preventDefault()}>{item.title}</Button>
                                                         </DialogTrigger>
                                                         <DialogContent>
                                                             <DialogHeader>
-                                                                <DialogTitle className="font-headline text-2xl text-primary">{item}</DialogTitle>
+                                                                <DialogTitle className="font-headline text-2xl text-primary">{item.title}</DialogTitle>
                                                                 <DialogDescription className="pt-4 text-base">
-                                                                Aqui virá a descrição detalhada sobre a prática de {item}. Este texto poderá ser editado futuramente para fornecer mais informações.
+                                                                    {item.description}
                                                                 </DialogDescription>
                                                             </DialogHeader>
                                                         </DialogContent>
