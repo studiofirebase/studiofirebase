@@ -14,7 +14,21 @@ import { Separator } from '@/components/ui/separator';
 
 export default function SettingsPage() {
   const [siteName, setSiteName] = useState("Italo Santos");
-  const [aboutText, setAboutText] = useState("Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.");
+  const [aboutText, setAboutText] = useState(`Características Físicas
+1,69m de altura e 70kg com cabelo castanho claro corpo atlético magro definido um dote de 20cm.
+
+Fetichista elite. Costumo dizer isso pois para meus servos o cachê que pagam indiferente em suas vidas.
+
+Independentemente do status social trato todos igualmente mesmo aqueles que só possam ter o prazer de desfrutar da minha companhia uma vez ao mês.
+
+Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores fantasias sexuais.
+
+Durante as sessões
+Gosto de proporcionar experiências únicas libertando os desejos mais obscuros e reprimidos. Realizo vários fetichessendo minhas práticas com mais experiência: D/s, fisting, pet-play, pissing, spit, leather, anal play, nipple play, ass play, spanking, humilhação, CBT, wax, sissificação, e-stim, bondage, asfixia. Disponho de acessórios e brinquedos para aquecer a relação.
+
+Para aqueles que não têm fantasias e fetiches, podemos ter uma relação sexual normal sem práticas.
+
+Tudo à disposição em um ambiente climatizado, seguro e confortável, com chuveiro quente, toalha limpa, sabonete, álcool gel, camisinha e lubrificante. Contrate-me no WhatsApp e me encontre aqui no meu local.`);
   const [price, setPrice] = useState("99,00");
   const [copyrightText, setCopyrightText] = useState("Copyrights © Italo Santos 2019 - Todos os direitos reservados");
   const [legalLinksText, setLegalLinksText] = useState("Termos & Condições | Política de Privacidade");
@@ -68,7 +82,7 @@ export default function SettingsPage() {
                     id="about-text"
                     value={aboutText}
                     onChange={(e) => setAboutText(e.target.value)}
-                    rows={5}
+                    rows={15}
                     placeholder="Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui."
                     />
                 </div>
