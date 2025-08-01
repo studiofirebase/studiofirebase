@@ -86,12 +86,10 @@ export default function Home() {
                 <div className="w-full max-w-sm mx-auto space-y-4">
                     <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
                     <div>
-                        <p className="text-sm text-muted-foreground mb-2">Pague com</p>
-                        <div className="grid grid-cols-4 gap-2">
+                        <div className="grid grid-cols-3 gap-2">
                             <Button variant="outline"><GoogleIcon className="h-5 w-5" /> Google</Button>
                             <Button variant="outline"><CreditCard className="h-5 w-5" /> Pix</Button>
                             <Button variant="outline"><Apple className="h-5 w-5" /> Apple</Button>
-                            <Button variant="outline"><PayPalIcon className="h-5 w-5" /> PayPal</Button>
                         </div>
                     </div>
                 </div>
@@ -100,6 +98,9 @@ export default function Home() {
                     {/* O preço será editável no painel ADM */}
                     <span className="text-6xl font-bold text-primary">{price}</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
+                </div>
+                <div className="w-full max-w-sm mx-auto mt-4">
+                    <Button variant="outline" className="w-full"><PayPalIcon className="h-5 w-5" /> PayPal</Button>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
