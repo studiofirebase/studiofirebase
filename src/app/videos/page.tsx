@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { PlayCircle } from "lucide-react";
+import { PlayCircle, Twitter, Upload } from "lucide-react";
 
 const videos = [
   {
@@ -36,8 +36,12 @@ export default function VideosPage() {
           Nossos Vídeos
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Fique por dentro dos bastidores, receitas e os melhores momentos da BurgerHub.
+          Assista aos nossos vídeos mais recentes, direto do Twitter e de uploads exclusivos. Fique por dentro dos bastidores, receitas e os melhores momentos da BurgerHub.
         </p>
+        <div className="flex justify-center gap-4 mt-4">
+            <Twitter className="h-6 w-6 text-muted-foreground" />
+            <Upload className="h-6 w-6 text-muted-foreground" />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
