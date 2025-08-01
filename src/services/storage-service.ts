@@ -3,28 +3,8 @@
 /**
  * @fileOverview Service for uploading media files to Firebase Storage.
  */
-import { initializeApp, cert, getApps, App } from 'firebase-admin/app';
-import { getStorage } from 'firebase-admin/storage';
+import { storage } from '@/lib/firebase-admin';
 import { fileTypeFromBuffer } from 'file-type';
-
-// Ensure this service is only initialized once
-let adminApp: App;
-if (!getApps().length) {
-  const serviceAccount = {
-    projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-  };
-  adminApp = initializeApp({
-    credential: cert(serviceAccount as any),
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  });
-} else {
-  adminApp = getApps()[0];
-}
-
-const storage = getStorage(adminApp);
-const bucket = storage.bucket();
 
 interface UploadMediaParams {
   fileBase64: string;
@@ -42,6 +22,8 @@ export async function uploadMedia({ fileBase64, fileName, category }: UploadMedi
   if (!storageBucket) {
     throw new Error("Firebase Storage bucket URL is not configured (NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET).");
   }
+
+  const bucket = storage.bucket();
 
   try {
     const buffer = Buffer.from(fileBase64.split(',')[1], 'base64');
@@ -76,6 +58,7 @@ export async function uploadMedia({ fileBase64, fileName, category }: UploadMedi
  * @returns {Promise<string[]>} A promise that resolves with an array of public URLs.
  */
 export async function listMedia(prefix: string): Promise<string[]> {
+  const bucket = storage.bucket();
   try {
     const [files] = await bucket.getFiles({ prefix: prefix });
     const urls = files.map(file => file.publicUrl());

@@ -4,34 +4,8 @@
  * @fileOverview Service for managing user data in Firebase for facial authentication.
  * This includes saving user details to the Realtime Database and their face image to Firebase Storage.
  */
-import { initializeApp, cert, getApps, App } from 'firebase-admin/app';
-import { getDatabase } from 'firebase-admin/database';
-import { getStorage } from 'firebase-admin/storage';
+import { db, storage } from '@/lib/firebase-admin';
 import type { RegisterUserInput } from '@/ai/flows/user-auth-flow';
-
-// Firebase Admin SDK Initialization
-const serviceAccount = {
-  projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
-  clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-  // Replace escaped newlines from environment variable
-  privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-};
-
-const storageBucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
-
-let adminApp: App;
-if (!getApps().length) {
-  adminApp = initializeApp({
-    credential: cert(serviceAccount as any),
-    databaseURL: `https://${serviceAccount.projectId}-default-rtdb.firebaseio.com`,
-    storageBucket: storageBucket,
-  });
-} else {
-  adminApp = getApps()[0];
-}
-
-const db = getDatabase(adminApp);
-const storage = getStorage(adminApp);
 
 /**
  * Saves user data to Realtime Database and their image to Firebase Storage.
@@ -40,6 +14,7 @@ const storage = getStorage(adminApp);
 export async function saveUser(userData: RegisterUserInput) {
   const { name, email, phone, imageBase64 } = userData;
 
+  const storageBucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
   if (!storageBucket) {
     throw new Error("Firebase Storage bucket URL is not configured in environment variables (NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET).");
   }
