@@ -110,8 +110,8 @@ Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores
               data-ai-hint="gourmet burger"
             />
              <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-lg">
-                <div className="bg-primary/80 p-6 md:p-8 rounded-lg neon-border-primary">
-                    <h1 className="font-headline text-8xl text-primary-foreground">
+                <div className="p-6 md:p-8 rounded-lg neon-border-primary">
+                    <h1 className="font-headline text-8xl neon-white-text">
                         {siteName}
                     </h1>
                 </div>
@@ -149,7 +149,7 @@ Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores
       <section className="py-16 md:py-24 container">
         <div className="text-center mb-12">
             <h2 className="font-headline text-4xl md:text-5xl">SOBRE</h2>
-            <div className="mx-auto max-w-2xl mt-4 text-muted-foreground">
+            <div className="mx-auto max-w-2xl mt-4 text-muted-foreground text-left">
               <p className="mb-4">
                 <span className="text-primary font-bold">Características Físicas</span>
                 <br />
