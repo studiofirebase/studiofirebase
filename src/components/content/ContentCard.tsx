@@ -6,7 +6,6 @@ import {
   CardContent,
   CardHeader,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 
 interface ContentCardProps {
   content: Content;
@@ -26,7 +25,6 @@ export function ContentCard({ content, priority = false }: ContentCardProps) {
               className="object-cover transition-transform group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={priority}
-              data-ai-hint={`hamburguer ${content.category}`}
             />
           </div>
         </CardHeader>
