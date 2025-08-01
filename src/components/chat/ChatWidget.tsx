@@ -60,7 +60,7 @@ export function ChatWidget() {
   return (
     <>
       <div className="fixed bottom-4 left-4 z-50">
-        <Button onClick={toggleChat} size="icon" className="rounded-full w-16 h-16 shadow-lg">
+        <Button onClick={toggleChat} size="icon" variant="default" className="rounded-full w-16 h-16 shadow-lg btn-neon-primary">
             {isOpen ? <X /> : <MessageCircle />}
             <span className="sr-only">Abrir Chat</span>
         </Button>

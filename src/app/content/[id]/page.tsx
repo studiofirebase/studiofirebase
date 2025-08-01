@@ -47,7 +47,7 @@ export default function ContentPage({ params }: { params: { id: string } }) {
                     {content.longDescription}
                 </p>
             </article>
-            <Separator className="my-8" />
+            <div className="my-8 separator-strong"></div>
             <SocialShareButtons />
         </div>
 
@@ -58,7 +58,7 @@ export default function ContentPage({ params }: { params: { id: string } }) {
         </aside>
       </div>
 
-      <Separator className="my-12 md:my-16" />
+      <div className="my-12 md:my-16 separator-strong"></div>
 
       <RecommendationList currentContentId={content.id} viewingHistory={mockViewingHistory} />
     </div>

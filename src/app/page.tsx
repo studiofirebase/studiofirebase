@@ -133,7 +133,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Separator className="my-8" />
+      <div className="my-8 separator-strong"></div>
       
       <section id="featured-content" className="py-12 md:py-16">
         <div className="container">

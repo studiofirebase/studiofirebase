@@ -78,4 +78,10 @@
         box-shadow: 0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent));
         transition: box-shadow 0.3s ease-in-out;
     }
+    .testimonial-card {
+        @apply shadow-lg border border-border/50;
+    }
+     .separator-strong {
+        @apply h-px w-full bg-border/50;
+    }
 }
