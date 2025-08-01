@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -629,7 +630,7 @@ export function Testimonials() {
                   </div>
                 </div>
                 <div className="flex gap-0.5 mb-4">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-primary fill-primary" />)}
+                    {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />)}
                 </div>
                 <p className="text-muted-foreground">{testimonial.review}</p>
                 {testimonial.reply && (

@@ -76,7 +76,7 @@ export default function ReviewsPage() {
                                     <div>
                                         <CardTitle className="text-xl font-headline">{review.name}</CardTitle>
                                         <div className="flex gap-0.5 mt-1">
-                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-primary fill-primary" />)}
+                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />)}
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ export default function ReviewsPage() {
                                     <div>
                                         <CardTitle className="text-xl font-headline">{review.name}</CardTitle>
                                         <div className="flex gap-0.5 mt-1">
-                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-primary fill-primary" />)}
+                                            {[...Array(5)].map((_, i) => <Star key={i} className="h-4 w-4 text-yellow-400 fill-yellow-400" />)}
                                         </div>
                                     </div>
                                 </div>
