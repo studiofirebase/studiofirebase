@@ -14,8 +14,11 @@ export function Header() {
 
   const navLinks = [
     { href: "/", label: "Home" },
+    { href: "/photos", label: "Fotos" },
     { href: "/videos", label: "Vídeos" },
     { href: "/store", label: "Loja" },
+    { href: "/subscriptions", label: "Assinatura" },
+    { href: "/channels", label: "Canais" },
   ];
 
   return (
