@@ -4,9 +4,8 @@ import { Button } from "@/components/ui/button";
 import { 
     MessageSquare, 
     Users, 
-    Package, 
-    ImageIcon, 
     Film, 
+    ImageIcon, 
     Upload, 
     GitMerge, 
     Star, 
@@ -24,7 +23,7 @@ const adminFeatures = [
     {
         icon: Users,
         title: "Assinantes",
-        description: "Visualize a lista de assinantes ativos, remova assinantes e ofereça acessos de teste (free trial).",
+        description: "Visualize as listas de assinantes ativos e inativos e ofereça acessos de teste (free trial).",
         buttonText: "Gerenciar Assinantes",
         href: "/admin/subscribers"
     },
@@ -52,7 +51,7 @@ const adminFeatures = [
     {
         icon: Upload,
         title: "Upload de Mídia",
-        description: "Faça upload de novas fotos e vídeos para usar no site.",
+        description: "Faça o upload de novas fotos e vídeos para usar no site.",
         buttonText: "Fazer Upload",
         href: "/admin/upload"
     },

@@ -18,7 +18,7 @@ export default function SubscribersPage() {
       </div>
       <div>
         <p className="text-muted-foreground">
-          Aqui você poderá ver a lista de assinantes, remover usuários e criar acessos de teste (free trial). Esta funcionalidade será implementada em breve.
+          Aqui você poderá ver as listas de assinantes ativos e inativos, e oferecer acessos de teste (free trial). Esta funcionalidade será implementada em breve.
         </p>
       </div>
     </div>
