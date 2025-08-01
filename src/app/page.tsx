@@ -114,7 +114,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
                     <Button asChild variant="default" className="w-full" size="lg">
-                        <Link href="/login"><ScanFace className="mr-2"/> Face ID</Link>
+                        <Link href="/facial-login"><ScanFace className="mr-2"/> Face ID</Link>
                     </Button>
                     <div className="grid grid-cols-3 gap-2">
                          <Button variant="outline-social" className="w-full neon-border-primary"><GoogleIcon /> Google</Button>
