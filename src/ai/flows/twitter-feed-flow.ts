@@ -50,7 +50,7 @@ const fetchTwitterMediaFlow = ai.defineFlow(
     inputSchema: TwitterMediaInputSchema,
     outputSchema: TwitterMediaOutputSchema,
   },
-  async ({ username, maxResults = 100 }) => {
+  async ({ username, maxResults }) => {
 
     const now = Date.now();
     const cachedEntry = cache.get(username);
@@ -88,7 +88,9 @@ const fetchTwitterMediaFlow = ai.defineFlow(
       const userId = userData.data?.id;
 
       if (!userId) {
-        throw new Error(`Usuário do Twitter "${username}" não encontrado.`);
+        // Se o usuário não for encontrado, retorne um array vazio em vez de lançar um erro.
+        console.warn(`Usuário do Twitter "${username}" não encontrado. Retornando array vazio.`);
+        return { tweets: [] };
       }
 
       // 2. Buscar a timeline do usuário
@@ -97,7 +99,7 @@ const fetchTwitterMediaFlow = ai.defineFlow(
           'expansions': 'attachments.media_keys',
           'media.fields': 'url,preview_image_url,type,variants,media_key',
           'exclude': 'retweets,replies',
-          'max_results': maxResults.toString(),
+          'max_results': (maxResults || 100).toString(),
       });
 
       const timelineResponse = await fetch(`https://api.twitter.com/2/users/${userId}/tweets?${params.toString()}`, { headers });
