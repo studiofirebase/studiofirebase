@@ -16,6 +16,8 @@ export function Header() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const navLinks = [
+    { href: "/fetish", label: "FETISH" },
+    { href: "/bdsm", label: "BDSM" },
     { href: "/", label: "Home" },
     { href: "/photos", label: "Fotos" },
     { href: "/videos", label: "Vídeos" },
