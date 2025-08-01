@@ -97,10 +97,10 @@ export default function Home() {
                         <Link href="/login"><ScanFace className="mr-2"/> Face ID</Link>
                     </Button>
                     <div className="grid grid-cols-3 gap-2">
+                         <Button variant="outline"><GoogleIcon /> Google</Button>
                          <Button asChild className="w-full" variant="default">
                             <Link href="/login">Pix</Link>
                         </Button>
-                        <Button variant="outline"><GoogleIcon /> Google</Button>
                         <Button variant="outline"><AppleIcon /> Apple</Button>
                     </div>
                 </div>
