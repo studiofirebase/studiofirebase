@@ -29,10 +29,10 @@ const adminFeatures = [
         href: "/admin/subscribers"
     },
     {
-        icon: Package,
-        title: "Produtos",
-        description: "Adicione e edite os produtos da sua loja online.",
-        buttonText: "Ver Produtos",
+        icon: Film,
+        title: "Vídeos Avulsos",
+        description: "Gerencie os vídeos avulsos para venda, adicione preços e vincule mídias do upload.",
+        buttonText: "Gerenciar Vídeos Avulsos",
         href: "/admin/products"
     },
     {
@@ -44,15 +44,15 @@ const adminFeatures = [
     },
     {
         icon: Film,
-        title: "Vídeos",
-        description: "Faça a gestão dos vídeos que aparecem no site.",
-        buttonText: "Gerenciar Vídeos",
+        title: "Vídeos (Feed)",
+        description: "Faça a gestão dos vídeos que aparecem no feed da página de vídeos.",
+        buttonText: "Gerenciar Vídeos do Feed",
         href: "/admin/videos"
     },
     {
         icon: Upload,
         title: "Upload de Mídia",
-        description: "Faça upload de novas fotos e vídeos.",
+        description: "Faça upload de novas fotos e vídeos para usar no site.",
         buttonText: "Fazer Upload",
         href: "/admin/upload"
     },
