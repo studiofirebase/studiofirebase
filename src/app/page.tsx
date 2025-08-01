@@ -97,7 +97,7 @@ export default function Home() {
                         <Link href="/login"><ScanFace className="mr-2"/> Face ID</Link>
                     </Button>
                     <div className="grid grid-cols-2 gap-2">
-                        <Button asChild size="lg" className="w-full" variant="default">
+                         <Button asChild size="lg" className="w-full" variant="default">
                             <Link href="/login">Entrar</Link>
                         </Button>
                         <div className="grid grid-cols-2 gap-2">
