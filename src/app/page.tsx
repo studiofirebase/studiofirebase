@@ -3,6 +3,14 @@ import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
+import { Apple, CreditCard } from "lucide-react";
+
+const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+);
+
 
 export default function Home() {
   const allContent = getAllContent();
@@ -25,6 +33,14 @@ export default function Home() {
               <Link href="#featured-content">Ver Cardápio</Link>
             </Button>
           </div>
+            <div className="mt-8 flex flex-col items-center gap-4">
+                <p className="text-sm text-muted-foreground">Pague com</p>
+                <div className="flex justify-center gap-4">
+                    <Button variant="outline"><GoogleIcon className="mr-2 h-5 w-5" /> Google Pay</Button>
+                    <Button variant="outline"><CreditCard className="mr-2 h-5 w-5" /> Pix</Button>
+                    <Button variant="outline"><Apple className="mr-2 h-5 w-5" /> Apple Pay</Button>
+                </div>
+            </div>
         </div>
       </section>
 
