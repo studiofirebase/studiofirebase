@@ -156,7 +156,7 @@ Tudo à disposição em um ambiente climatizado, seguro e confortável, com chuv
 
       <section className="py-16 md:py-24 container">
         <div className="text-center mb-12">
-            <h2 className="font-headline text-3xl md:text-4xl">SOBRE</h2>
+            <h2 className="font-headline text-4xl md:text-5xl">SOBRE</h2>
             <p className="mx-auto max-w-2xl mt-4 text-muted-foreground whitespace-pre-wrap">
                 {presentationText}
             </p>
