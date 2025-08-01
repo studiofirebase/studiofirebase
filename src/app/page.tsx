@@ -98,7 +98,7 @@ export default function Home() {
                     </Button>
                     <div className="grid grid-cols-2 gap-2">
                          <Button asChild size="lg" className="w-full" variant="default">
-                            <Link href="/login">Entrar</Link>
+                            <Link href="/login">Pix</Link>
                         </Button>
                         <div className="grid grid-cols-2 gap-2">
                             <Button variant="outline" size="lg"><GoogleIcon /> Google</Button>
@@ -115,7 +115,7 @@ export default function Home() {
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
                       <DialogTrigger asChild>
-                         <Button size="lg" className="w-full" variant="default">Assinar Agora</Button>
+                         <Button size="lg" className="w-full" variant="default">Entrar</Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
