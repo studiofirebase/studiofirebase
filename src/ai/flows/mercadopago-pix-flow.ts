@@ -36,7 +36,7 @@ const createPixPaymentFlow = ai.defineFlow(
   async ({ amount, email }) => {
     const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
 
-    if (!accessToken || accessToken === "YOUR_MERCADOPAGO_ACCESS_TOKEN") {
+    if (!accessToken || accessToken === "YOUR_MERCADOPAGO_ACCESS_TOKEN" || accessToken === "") {
       const errorMessage = "O token de acesso do Mercado Pago (MERCADOPAGO_ACCESS_TOKEN) não está configurado.";
       console.error(errorMessage);
       return { error: errorMessage };

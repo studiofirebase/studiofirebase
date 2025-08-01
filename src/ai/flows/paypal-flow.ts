@@ -46,7 +46,7 @@ function payPalClient() {
     const clientId = process.env.PAYPAL_CLIENT_ID;
     const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
-    if (!clientId || !clientSecret) {
+    if (!clientId || !clientSecret || clientId === "" || clientSecret === "") {
         throw new Error("Credenciais do PayPal (PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET) não estão configuradas corretamente no ambiente do servidor.");
     }
     
