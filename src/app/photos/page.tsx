@@ -1,34 +1,13 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Twitter, Instagram, Upload } from "lucide-react";
+import { getLatestTweetsWithImages } from "@/services/twitter";
+import Image from "next/image";
+import Link from "next/link";
 
-const photos = [
-  {
-    id: 1,
-    title: "Making of do Bacon Supreme",
-    thumbnail: "https://placehold.co/600x400.png",
-    dataAiHint: "burger photo shoot",
-  },
-  {
-    id: 2,
-    title: "Ingredientes Frescos",
-    thumbnail: "https://placehold.co/600x400.png",
-    dataAiHint: "fresh ingredients",
-  },
-  {
-    id: 3,
-    title: "Nossa Equipe na Cozinha",
-    thumbnail: "https://placehold.co/600x400.png",
-    dataAiHint: "kitchen staff",
-  },
-   {
-    id: 4,
-    title: "Clientes Satisfeitos",
-    thumbnail: "https://placehold.co/600x400.png",
-    dataAiHint: "happy customer",
-  },
-];
+export default async function PhotosPage() {
+  const tweets = await getLatestTweetsWithImages('italosantosbr');
 
-export default function PhotosPage() {
   return (
     <div className="container py-16 md:py-24">
       <div className="text-center mb-12">
@@ -36,26 +15,30 @@ export default function PhotosPage() {
           Galeria de Fotos
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Um banquete para os olhos. Veja nossos hambúrgueres em alta resolução, direto do nosso Instagram, Twitter e uploads exclusivos.
+          Um banquete para os olhos. Veja nossas fotos mais recentes, direto do nosso Twitter e de uploads exclusivos.
         </p>
         <div className="flex justify-center gap-4 mt-4">
-            <Twitter className="h-6 w-6 text-muted-foreground" />
+            <Link href="https://twitter.com/italosantosbr" target="_blank" aria-label="Twitter">
+                <Twitter className="h-6 w-6 text-muted-foreground hover:text-primary" />
+            </Link>
             <Instagram className="h-6 w-6 text-muted-foreground" />
             <Upload className="h-6 w-6 text-muted-foreground" />
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {photos.map((photo) => (
-          <Card key={photo.id} className="overflow-hidden group cursor-pointer">
-            <CardContent className="p-0">
-              <div className="relative aspect-video">
-                <img src={photo.thumbnail} alt={photo.title} className="w-full h-full object-cover transition-transform group-hover:scale-105" data-ai-hint={photo.dataAiHint} />
-              </div>
-               <div className="p-4">
-                <h3 className="font-headline text-xl">{photo.title}</h3>
-              </div>
-            </CardContent>
+        {tweets.map((tweet) => (
+          <Card key={tweet.id} className="overflow-hidden group cursor-pointer">
+            <Link href={`https://twitter.com/italosantosbr/status/${tweet.id}`} target="_blank">
+                <CardContent className="p-0">
+                <div className="relative aspect-video">
+                    <Image src={tweet.imageUrl} alt={tweet.text} className="w-full h-full object-cover transition-transform group-hover:scale-105" fill />
+                </div>
+                <div className="p-4">
+                    <p className="text-muted-foreground">{tweet.text}</p>
+                </div>
+                </CardContent>
+            </Link>
           </Card>
         ))}
       </div>
