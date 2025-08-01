@@ -23,8 +23,8 @@ export default function Home() {
 
   return (
     <>
-      <section className="py-20 md:py-32 bg-card border-t border-b">
-        <div className="container text-center">
+      <section className="bg-card border-b">
+        <div className="container text-center py-20 md:py-32">
           <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter text-primary leading-tight">
             Os Melhores Hambúrgueres da Cidade
           </h1>
