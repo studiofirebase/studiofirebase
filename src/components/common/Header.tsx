@@ -6,9 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Menu, User, Shield, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogFooter, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogFooter, DialogTrigger, DialogTitle as DialogTitleComponent } from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -53,7 +53,7 @@ const FetishMenu = () => (
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle className="font-headline text-2xl text-primary">{item.title}</DialogTitle>
+                        <DialogTitleComponent className="font-headline text-2xl text-primary">{item.title}</DialogTitleComponent>
                         <DialogDescription className="pt-4 text-base">
                           {item.description}
                         </DialogDescription>
@@ -102,6 +102,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-background text-foreground">
+                <SheetHeader className="sr-only">
+                  <SheetTitle>Menu Principal</SheetTitle>
+                </SheetHeader>
                 <div className="flex flex-col gap-6">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsSheetOpen(false)}>
                         <Menu className="h-6 w-6 text-primary" />
@@ -134,7 +137,7 @@ export function Header() {
                                                                             </DialogTrigger>
                                                                             <DialogContent>
                                                                                 <DialogHeader>
-                                                                                    <DialogTitle className="font-headline text-2xl text-primary">{item.title}</DialogTitle>
+                                                                                    <DialogTitleComponent className="font-headline text-2xl text-primary">{item.title}</DialogTitleComponent>
                                                                                     <DialogDescription className="pt-4 text-base">
                                                                                         {item.description}
                                                                                     </DialogDescription>
@@ -173,7 +176,7 @@ export function Header() {
                       </DialogTrigger>
                        <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
-                          <DialogTitle>Escolha o tipo de acesso</DialogTitle>
+                          <DialogTitleComponent>Escolha o tipo de acesso</DialogTitleComponent>
                           <DialogDescription>
                             Selecione se você é um cliente ou administrador para continuar.
                           </DialogDescription>
@@ -225,7 +228,7 @@ export function Header() {
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                  <DialogTitle>Escolha o tipo de acesso</DialogTitle>
+                  <DialogTitleComponent>Escolha o tipo de acesso</DialogTitleComponent>
                   <DialogDescription>
                     Selecione se você é um cliente ou administrador para continuar.
                   </DialogDescription>
