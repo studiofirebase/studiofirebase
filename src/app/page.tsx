@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <section>
-        <div className="container text-center py-20 md:py-32">
+        <div className="container text-center pt-8 pb-20 md:pb-32">
           
           <div className="mb-8 flex justify-center">
             <Image 
