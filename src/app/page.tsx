@@ -75,9 +75,11 @@ export default function Home() {
               data-ai-hint="gourmet burger"
             />
              <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-lg">
-                <h1 className="font-headline text-6xl md:text-8xl text-white drop-shadow-lg">
-                    {siteName}
-                </h1>
+                <div className="bg-black/50 p-6 md:p-8 rounded-lg">
+                    <h1 className="font-headline text-6xl md:text-8xl text-white drop-shadow-lg">
+                        {siteName}
+                    </h1>
+                </div>
             </div>
           </div>
 
