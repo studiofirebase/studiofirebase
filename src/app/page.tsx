@@ -2,6 +2,7 @@ import { getAllContent } from "@/lib/content";
 import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Testimonials } from "@/components/home/Testimonials";
 
 export default function Home() {
   const allContent = getAllContent();
@@ -39,6 +40,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Testimonials />
     </>
   );
 }
