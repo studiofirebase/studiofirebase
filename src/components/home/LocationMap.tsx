@@ -1,6 +1,5 @@
 import { Card } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
-import Image from "next/image";
 
 export function LocationMap() {
     return (
@@ -16,14 +15,8 @@ export function LocationMap() {
                     </p>
                 </div>
                 <Card className="overflow-hidden shadow-lg">
-                    <div className="relative aspect-video w-full">
-                         <Image
-                            src="https://placehold.co/1200x600.png"
-                            alt="Mapa da localização da hamburgueria"
-                            fill
-                            className="object-cover"
-                            data-ai-hint="map location"
-                        />
+                    <div className="relative aspect-video w-full bg-muted flex items-center justify-center">
+                        <p className="text-muted-foreground">O mapa será exibido aqui.</p>
                     </div>
                 </Card>
                  <p className="text-center text-sm text-muted-foreground mt-4">
