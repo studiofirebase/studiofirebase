@@ -9,6 +9,7 @@ import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
 import { Apple, CreditCard, User, Shield, Camera } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import Image from "next/image";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -25,12 +26,18 @@ export default function Home() {
     <>
       <section className="bg-card border-b">
         <div className="container text-center py-20 md:py-32">
-          <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter text-primary leading-tight">
-            Os Melhores Hambúrgueres da Cidade
-          </h1>
-          <p className="mx-auto max-w-[700px] text-lg text-muted-foreground mt-4">
-            Descubra um mundo de sabores únicos, criações artesanais e os hambúrgueres mais suculentos que você já provou.
-          </p>
+          
+          <div className="mb-8 flex justify-center">
+            <Image 
+              src="https://placehold.co/1200x300.png"
+              alt="Hambúrguer de destaque"
+              width={1200}
+              height={300}
+              className="rounded-lg shadow-lg"
+              data-ai-hint="gourmet burger"
+            />
+          </div>
+
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
                     <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
@@ -48,7 +55,7 @@ export default function Home() {
                     <span className="text-6xl font-bold text-primary">99,00</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
-                <div className="mt-4 w-full max-w-sm mx-auto">
+                <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
                          <Button size="lg" className="w-1/2">Entrar</Button>
