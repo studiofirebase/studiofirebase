@@ -40,6 +40,10 @@ export default function Home() {
                     <Button variant="outline"><CreditCard className="mr-2 h-5 w-5" /> Pix</Button>
                     <Button variant="outline"><Apple className="mr-2 h-5 w-5" /> Apple Pay</Button>
                 </div>
+                 <div className="mt-8 text-center">
+                    <span className="text-6xl font-bold text-primary">99,00</span>
+                    <span className="text-lg text-muted-foreground ml-1">BRL</span>
+                </div>
             </div>
         </div>
       </section>
