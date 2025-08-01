@@ -30,6 +30,11 @@ export default function Home() {
   const allContent = getAllContent();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  // Futuramente, estes valores virão do painel de administração
+  const presentationText = "Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.";
+  const price = "99,00";
+
+
   return (
     <>
       <section className="pb-20 md:pb-32">
@@ -61,7 +66,8 @@ export default function Home() {
                 </div>
 
                  <div className="mt-8 text-center">
-                    <span className="text-6xl font-bold text-primary">99,00</span>
+                    {/* O preço será editável no painel ADM */}
+                    <span className="text-6xl font-bold text-primary">{price}</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
@@ -99,8 +105,9 @@ export default function Home() {
             <h2 className="font-headline text-4xl md:text-5xl text-primary">
               SOBRE
             </h2>
+            {/* O texto de apresentação será editável no painel ADM */}
             <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-              Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.
+              {presentationText}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
@@ -116,7 +123,3 @@ export default function Home() {
     </>
   );
 }
-
-    
-
-    
