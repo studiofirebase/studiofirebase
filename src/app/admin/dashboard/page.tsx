@@ -17,7 +17,7 @@ const adminFeatures = [
     {
         icon: MessageSquare,
         title: "Conversas",
-        description: "Gerencie as conversas do chat em tempo real.",
+        description: "Gerencie conversas iniciadas, histórico e veja visitantes em tempo real.",
         buttonText: "Ver Chats"
     },
     {
