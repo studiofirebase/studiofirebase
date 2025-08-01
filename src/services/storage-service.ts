@@ -18,6 +18,10 @@ interface UploadMediaParams {
  * @returns {Promise<string>} The public URL of the uploaded file.
  */
 export async function uploadMedia({ fileBase64, fileName, category }: UploadMediaParams): Promise<string> {
+   if (!storage) {
+     throw new Error("A conexão com o Firebase Storage não foi inicializada. Verifique as credenciais do servidor.");
+  }
+  
   const storageBucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
   if (!storageBucket) {
     throw new Error("Firebase Storage bucket URL is not configured (NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET).");
@@ -58,6 +62,9 @@ export async function uploadMedia({ fileBase64, fileName, category }: UploadMedi
  * @returns {Promise<string[]>} A promise that resolves with an array of public URLs.
  */
 export async function listMedia(prefix: string): Promise<string[]> {
+   if (!storage) {
+     throw new Error("A conexão com o Firebase Storage não foi inicializada. Verifique as credenciais do servidor.");
+  }
   const bucket = storage.bucket();
   try {
     const [files] = await bucket.getFiles({ prefix: prefix });

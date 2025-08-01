@@ -14,6 +14,10 @@ import type { RegisterUserInput } from '@/ai/flows/user-auth-flow';
 export async function saveUser(userData: RegisterUserInput) {
   const { name, email, phone, imageBase64 } = userData;
 
+  if (!db || !storage) {
+     throw new Error("A conexão com o Firebase não foi inicializada. Verifique as credenciais do servidor.");
+  }
+
   const storageBucket = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
   if (!storageBucket) {
     throw new Error("Firebase Storage bucket URL is not configured in environment variables (NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET).");
@@ -60,6 +64,9 @@ export async function saveUser(userData: RegisterUserInput) {
  * @returns {Promise<any[]>} A promise that resolves to an array of user objects.
  */
 export async function getAllUsers(): Promise<any[]> {
+    if (!db) {
+     throw new Error("A conexão com o Firebase não foi inicializada. Verifique as credenciais do servidor.");
+    }
     try {
         const usersRef = db.ref('users');
         const snapshot = await usersRef.once('value');
