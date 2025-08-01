@@ -25,15 +25,15 @@ export default function Home() {
 
   return (
     <>
-      <section>
-        <div className="container text-center pb-20 md:pb-32">
+      <section className="pb-20 md:pb-32">
+        <div className="container text-center">
           
           <div className="mb-8 flex justify-center">
             <Image 
-              src="https://placehold.co/1200x300.png"
+              src="https://placehold.co/1200x600.png"
               alt="Hambúrguer de destaque"
               width={1200}
-              height={300}
+              height={600}
               className="rounded-lg shadow-lg"
               data-ai-hint="gourmet burger"
             />
