@@ -2,16 +2,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { getAllContent } from "@/lib/content";
-import { ContentCard } from "@/components/content/ContentCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Testimonials } from "@/components/home/Testimonials";
-import { CreditCard, User, Shield, ScanFace } from "lucide-react";
+import { ScanFace } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import Image from "next/image";
 import { LocationMap } from "@/components/home/LocationMap";
-import { Separator } from "@/components/ui/separator";
 
 const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -28,8 +25,6 @@ const AppleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 
 export default function Home() {
-  const allContent = getAllContent();
-  const [isLoginDialogOpen, setIsLoginDialogOpen] = useState(false);
   const [isAgeGateOpen, setIsAgeGateOpen] = useState(false);
 
   useEffect(() => {
@@ -130,9 +125,17 @@ export default function Home() {
               {presentationText}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
-            {allContent.map((content, index) => (
-              <ContentCard key={content.id} content={content} priority={index < 3} />
+           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6 mt-12">
+            {[...Array(4)].map((_, index) => (
+                 <div key={index} className="aspect-square relative overflow-hidden rounded-lg group">
+                    <Image
+                      src={`https://placehold.co/600x600.png`}
+                      alt={`Foto do feed ${index + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      data-ai-hint="boudoir photo"
+                    />
+                  </div>
             ))}
           </div>
         </div>
