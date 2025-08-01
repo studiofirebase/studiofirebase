@@ -39,6 +39,7 @@ export default function Home() {
   }
 
   // Futuramente, estes valores virão do painel de administração
+  const siteName = "Italo Santos";
   const presentationText = "Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.";
   const price = "99,00";
 
@@ -64,7 +65,7 @@ export default function Home() {
       <section className="pb-8">
         <div className="text-center">
           
-          <div className="mb-8 flex justify-center">
+          <div className="mb-8 relative flex justify-center">
             <Image 
               src="https://placehold.co/1200x600.png"
               alt="Hambúrguer de destaque"
@@ -73,11 +74,16 @@ export default function Home() {
               className="rounded-lg shadow-lg"
               data-ai-hint="gourmet burger"
             />
+             <div className="absolute inset-0 flex items-center justify-center bg-black/30 rounded-lg">
+                <h1 className="font-headline text-6xl md:text-8xl text-white drop-shadow-lg">
+                    {siteName}
+                </h1>
+            </div>
           </div>
 
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
-                    <Button variant="outline" className="w-full"><ScanFace /> Face ID</Button>
+                    <Button variant="outline" className="w-full"><ScanFace className="mr-2"/> Face ID</Button>
                     <div className="grid grid-cols-3 gap-2">
                         <Button variant="outline"><GoogleIcon /> Google</Button>
                         <Button variant="outline"><CreditCard /> Pix</Button>

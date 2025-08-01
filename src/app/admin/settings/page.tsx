@@ -12,13 +12,14 @@ import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function SettingsPage() {
+  const [siteName, setSiteName] = useState("Italo Santos");
   const [aboutText, setAboutText] = useState("Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.");
   const [price, setPrice] = useState("99,00");
   const { toast } = useToast();
 
   const handleSave = () => {
     // Futuramente, esta função salvará os dados em um banco de dados.
-    console.log("Saving data:", { aboutText, price });
+    console.log("Saving data:", { siteName, aboutText, price });
     toast({
       title: "Sucesso!",
       description: "As configurações foram salvas.",
@@ -44,6 +45,15 @@ export default function SettingsPage() {
             <CardTitle className="font-headline">Editar Conteúdo da Página Inicial</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
+            <div className="space-y-2">
+                <Label htmlFor="site-name">Nome de Destaque (Capa)</Label>
+                <Input
+                id="site-name"
+                value={siteName}
+                onChange={(e) => setSiteName(e.target.value)}
+                placeholder="Nome para exibir na capa"
+                />
+            </div>
             <div className="space-y-2">
                 <Label htmlFor="about-text">Texto da Seção "SOBRE"</Label>
                 <Textarea
