@@ -93,7 +93,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
-                    <Button variant="destructive" className="w-full"><ScanFace className="mr-2"/> Face ID</Button>
+                    <Button variant="default" className="w-full"><ScanFace className="mr-2"/> Face ID</Button>
                     <div className="grid grid-cols-3 gap-2">
                         <Button variant="outline"><GoogleIcon /> Google</Button>
                         <Button variant="outline"><CreditCard /> Pix</Button>
@@ -109,7 +109,7 @@ export default function Home() {
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
                       <DialogTrigger asChild>
-                         <Button size="lg" className="w-1/2">Entrar</Button>
+                         <Button size="lg" className="w-1/2" variant="destructive">Entrar</Button>
                       </DialogTrigger>
                       <DialogContent className="sm:max-w-[425px]">
                         <DialogHeader>
