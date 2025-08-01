@@ -85,7 +85,7 @@ export default function Home() {
 
           <div className="mt-8 flex flex-col items-center gap-4">
                 <div className="w-full max-w-sm mx-auto space-y-4">
-                    <Button variant="outline" className="w-full"><ScanFace className="mr-2"/> Face ID</Button>
+                    <Button variant="default" className="w-full bg-accent hover:bg-accent/90"><ScanFace className="mr-2"/> Face ID</Button>
                     <div className="grid grid-cols-3 gap-2">
                         <Button variant="outline"><GoogleIcon /> Google</Button>
                         <Button variant="outline"><CreditCard /> Pix</Button>
