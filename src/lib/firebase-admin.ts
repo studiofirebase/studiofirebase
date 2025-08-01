@@ -8,7 +8,6 @@ import { getFirestore } from 'firebase-admin/firestore';
 const adminCredentials = process.env.FIREBASE_ADMIN_CREDENTIALS;
 
 let adminApp: App;
-let db, storage, firestore;
 
 if (adminCredentials) {
   try {
@@ -28,15 +27,26 @@ if (adminCredentials) {
       adminApp = getApps()[0];
     }
 
-    db = getDatabase(adminApp);
-    storage = getStorage(adminApp);
-    firestore = getFirestore(adminApp);
-
   } catch (error: any) {
     console.error("Falha ao inicializar o Firebase Admin SDK. Verifique as credenciais em FIREBASE_ADMIN_CREDENTIALS.", error.message);
+    // Lançar o erro impede que o resto do código tente usar um 'adminApp' não inicializado.
+    throw new Error("As credenciais do Firebase Admin não puderam ser analisadas. O backend não pode ser iniciado.");
   }
 } else {
   console.warn("A variável de ambiente FIREBASE_ADMIN_CREDENTIALS não está definida. Os serviços do Firebase Admin não funcionarão.");
 }
+
+// @ts-ignore - adminApp será inicializado se as credenciais existirem
+const db = adminApp ? getDatabase(adminApp) : null;
+// @ts-ignore
+const storage = adminApp ? getStorage(adminApp) : null;
+// @ts-ignore
+const firestore = adminApp ? getFirestore(adminApp) : null;
+
+
+if (!db || !storage || !firestore) {
+    console.warn("Uma ou mais conexões do Firebase (DB, Storage, Firestore) não foram inicializadas devido à falta de credenciais.");
+}
+
 
 export { db, storage, firestore };
