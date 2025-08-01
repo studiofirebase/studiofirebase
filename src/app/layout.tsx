@@ -6,8 +6,8 @@ import { Footer } from '@/components/common/Footer';
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: 'FacePass - Unlock Exclusive Content',
-  description: 'A platform for purchasing and subscribing to exclusive content with secure facial login.',
+  title: 'Hamburgueria - Os Melhores da Cidade',
+  description: 'Uma plataforma para pedir os melhores hambúrgueres, com fotos, vídeos e clube de assinatura.',
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

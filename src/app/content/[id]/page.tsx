@@ -14,7 +14,6 @@ export default function ContentPage({ params }: { params: { id: string } }) {
     notFound();
   }
   
-  // Mock viewing history for recommendation engine. In a real app, this would come from the user's data.
   const mockViewingHistory = contentData
     .map(c => c.id)
     .filter(id => id !== content.id)
@@ -28,7 +27,7 @@ export default function ContentPage({ params }: { params: { id: string } }) {
             <h1 className="font-headline text-4xl md:text-5xl font-bold leading-tight mb-4">
                 {content.title}
             </h1>
-            <p className="text-muted-foreground text-lg mb-6">By {content.author}</p>
+            <p className="text-muted-foreground text-lg mb-6">Criado por {content.author}</p>
             <div className="relative aspect-video w-full rounded-lg overflow-hidden mb-8 shadow-md">
                 <Image 
                     src={content.image}
@@ -36,7 +35,7 @@ export default function ContentPage({ params }: { params: { id: string } }) {
                     fill
                     className="object-cover"
                     priority
-                    data-ai-hint={`${content.category} landscape`}
+                    data-ai-hint={`hamburguer ${content.category}`}
                 />
             </div>
 

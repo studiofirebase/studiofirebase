@@ -30,7 +30,7 @@ export function ContentCard({ content, priority = false }: ContentCardProps) {
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               priority={priority}
-              data-ai-hint={`${content.category} ${content.title.split(' ')[0]}`}
+              data-ai-hint={`hamburguer ${content.category}`}
             />
           </div>
         </CardHeader>
@@ -46,10 +46,10 @@ export function ContentCard({ content, priority = false }: ContentCardProps) {
         <CardFooter className="p-4 md:p-6 pt-0 mt-auto">
           <div className="w-full flex justify-between items-center">
             <p className="text-lg font-bold text-primary">
-              ${content.price.toFixed(2)}
+              R${content.price.toFixed(2).replace('.',',')}
             </p>
             <Button variant="outline" size="sm" asChild>
-                <span className="z-10">View Content</span>
+                <span className="z-10">Ver Detalhes</span>
             </Button>
           </div>
         </CardFooter>

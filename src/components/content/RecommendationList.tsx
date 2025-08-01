@@ -31,7 +31,7 @@ export async function RecommendationList({
 
   return (
     <div className="mt-12 md:mt-16">
-      <h2 className="font-headline text-3xl mb-6">You Might Also Like</h2>
+      <h2 className="font-headline text-3xl mb-6">Você também pode gostar</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recommendations.map((content) => (
           <ContentCard key={content.id} content={content} />
