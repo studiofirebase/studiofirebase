@@ -127,7 +127,7 @@ export default function Home() {
           </div>
            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-6 mt-12">
             {[...Array(4)].map((_, index) => (
-                 <div key={index} className="aspect-square relative overflow-hidden rounded-lg group">
+                 <div key={index} className="aspect-square relative overflow-hidden rounded-lg group hover:neon-border-primary transition-all duration-300">
                     <Image
                       src={`https://placehold.co/600x600.png`}
                       alt={`Foto do feed ${index + 1}`}
@@ -146,4 +146,6 @@ export default function Home() {
     </>
   );
 }
+
+
 
