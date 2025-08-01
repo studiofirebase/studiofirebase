@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Twitter, Instagram, Upload } from "lucide-react";
 
 const photos = [
   {
@@ -35,8 +36,13 @@ export default function PhotosPage() {
           Galeria de Fotos
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Um banquete para os olhos. Veja nossos hambúrgueres em alta resolução.
+          Um banquete para os olhos. Veja nossos hambúrgueres em alta resolução, direto do nosso Instagram, Twitter e uploads exclusivos.
         </p>
+        <div className="flex justify-center gap-4 mt-4">
+            <Twitter className="h-6 w-6 text-muted-foreground" />
+            <Instagram className="h-6 w-6 text-muted-foreground" />
+            <Upload className="h-6 w-6 text-muted-foreground" />
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
