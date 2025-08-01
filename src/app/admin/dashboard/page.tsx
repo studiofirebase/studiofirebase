@@ -23,7 +23,7 @@ const adminFeatures = [
     {
         icon: Users,
         title: "Assinantes",
-        description: "Visualize e gerencie os assinantes dos seus canais.",
+        description: "Visualize a lista de assinantes ativos, remova assinantes e ofereça acessos de teste (free trial).",
         buttonText: "Gerenciar Assinantes"
     },
     {
