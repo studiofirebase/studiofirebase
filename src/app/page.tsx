@@ -97,11 +97,11 @@ export default function Home() {
                         <Link href="/login"><ScanFace className="mr-2"/> Face ID</Link>
                     </Button>
                     <div className="grid grid-cols-3 gap-2">
-                         <Button variant="outline"><GoogleIcon /> Google</Button>
+                         <Button variant="outline-social" className="w-full neon-border-primary"><GoogleIcon /> Google</Button>
                          <Button asChild className="w-full" variant="default">
                             <Link href="/login">Pix</Link>
                         </Button>
-                        <Button variant="outline"><AppleIcon /> Apple</Button>
+                        <Button variant="outline-social" className="w-full neon-border-primary"><AppleIcon /> Apple</Button>
                     </div>
                 </div>
 
@@ -111,27 +111,7 @@ export default function Home() {
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
-                    <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
-                      <DialogTrigger asChild>
-                         <Button size="lg" className="w-full" variant="default">Entrar</Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px]">
-                        <DialogHeader>
-                          <DialogTitle>Escolha o tipo de acesso</DialogTitle>
-                          <DialogDescription>
-                            Selecione se você é um cliente ou administrador para continuar.
-                          </DialogDescription>
-                        </DialogHeader>
-                        <div className="grid gap-4 py-4">
-                            <Button asChild>
-                                <Link href="/login" onClick={() => setIsLoginDialogOpen(false)}><User /> Acesso Cliente</Link>
-                            </Button>
-                            <Button asChild variant="outline">
-                                <Link href="/admin/login" onClick={() => setIsLoginDialogOpen(false)}><Shield/> Acesso ADM</Link>
-                            </Button>
-                        </div>
-                      </DialogContent>
-                    </Dialog>
+                    <Button size="lg" className="w-full" variant="default">Entrar</Button>
                 </div>
             </div>
         </div>
