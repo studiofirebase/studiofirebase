@@ -69,21 +69,13 @@ export default function Home() {
 
   // Futuramente, estes valores virão do painel de administração
   const siteName = "Italo Santos";
-  const presentationText = `Características Físicas
-1,69m de altura e 70kg com cabelo castanho claro corpo atlético magro definido um dote de 20cm.
+  const presentationText = `1,69m de altura e 70kg com cabelo castanho claro corpo atlético magro definido um dote de 20cm.
 
 Fetichista elite. Costumo dizer isso pois para meus servos o cachê que pagam indiferente em suas vidas.
 
 Independentemente do status social trato todos igualmente mesmo aqueles que só possam ter o prazer de desfrutar da minha companhia uma vez ao mês.
 
-Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores fantasias sexuais.
-
-Durante as sessões
-Gosto de proporcionar experiências únicas libertando os desejos mais obscuros e reprimidos. Realizo vários fetichessendo minhas práticas com mais experiência: D/s, fisting, pet-play, pissing, spit, leather, anal play, nipple play, ass play, spanking, humilhação, CBT, wax, sissificação, e-stim, bondage, asfixia. Disponho de acessórios e brinquedos para aquecer a relação.
-
-Para aqueles que não têm fantasias e fetiches, podemos ter uma relação sexual normal sem práticas.
-
-Tudo à disposição em um ambiente climatizado, seguro e confortável, com chuveiro quente, toalha limpa, sabonete, álcool gel, camisinha e lubrificante. Contrate-me no WhatsApp e me encontre aqui no meu local.`;
+Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores fantasias sexuais.`;
   const price = "99,00";
 
 
@@ -157,9 +149,33 @@ Tudo à disposição em um ambiente climatizado, seguro e confortável, com chuv
       <section className="py-16 md:py-24 container">
         <div className="text-center mb-12">
             <h2 className="font-headline text-4xl md:text-5xl">SOBRE</h2>
-            <p className="mx-auto max-w-2xl mt-4 text-muted-foreground whitespace-pre-wrap">
-                {presentationText}
-            </p>
+            <div className="mx-auto max-w-2xl mt-4 text-muted-foreground whitespace-pre-wrap">
+              <p className="mb-4">
+                <span className="text-primary font-bold">Características Físicas</span>
+                <br />
+                1,69m de altura e 70kg com cabelo castanho claro corpo atlético magro definido um dote de 20cm.
+              </p>
+              <p className="mb-4">
+                Fetichista elite. Costumo dizer isso pois para meus servos o cachê que pagam indiferente em suas vidas.
+              </p>
+              <p className="mb-4">
+                Independentemente do status social trato todos igualmente mesmo aqueles que só possam ter o prazer de desfrutar da minha companhia uma vez ao mês.
+              </p>
+              <p className="mb-4">
+                Sou cordial e autoritário, o acompanhante ideal para te iniciar em suas maiores fantasias sexuais.
+              </p>
+              <p className="mb-4">
+                <span className="text-primary font-bold">Durante as sessões</span>
+                <br />
+                Gosto de proporcionar experiências únicas libertando os desejos mais obscuros e reprimidos. Realizo vários fetichessendo minhas práticas com mais experiência: D/s, fisting, pet-play, pissing, spit, leather, anal play, nipple play, ass play, spanking, humilhação, CBT, wax, sissificação, e-stim, bondage, asfixia. Disponho de acessórios e brinquedos para aquecer a relação.
+              </p>
+              <p className="mb-4">
+                <span className="text-primary font-bold">Para aqueles que não têm fantasias e fetiches, podemos ter uma relação sexual normal sem práticas.</span>
+              </p>
+               <p className="mb-4">
+                Tudo à disposição em um ambiente climatizado, seguro e confortável, com chuveiro quente, toalha limpa, sabonete, álcool gel, camisinha e lubrificante. Contrate-me no WhatsApp e me encontre aqui no meu local.
+              </p>
+            </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8 max-w-4xl mx-auto">
