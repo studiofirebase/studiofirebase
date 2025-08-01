@@ -26,7 +26,6 @@ const initialIntegrations = {
     facebook: { name: 'Facebook', icon: Facebook, connected: true },
     instagram: { name: 'Instagram', icon: Instagram, connected: true },
     twitter: { name: 'Twitter (X)', icon: Twitter, connected: false },
-    paypal: { name: 'PayPal', icon: PayPalIcon, connected: true },
     mercadopago: { name: 'Mercado Pago', icon: MercadoPagoIcon, connected: false },
 };
 
@@ -90,5 +89,3 @@ export default function IntegrationsPage() {
     </div>
   );
 }
-
-    
