@@ -1,12 +1,16 @@
 
+"use client";
+
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const fetishCategories = [
   {
@@ -115,7 +119,7 @@ export default function FetishBdsmPage() {
           FETISH & BDSM
         </h1>
         <p className="mx-auto max-w-2xl mt-4 text-lg text-muted-foreground">
-          Explore a lista de fetiches e práticas BDSM disponíveis.
+          Explore a lista de fetiches e práticas BDSM disponíveis. Clique em um item para saber mais.
         </p>
       </div>
 
@@ -126,21 +130,24 @@ export default function FetishBdsmPage() {
               <CardTitle className="font-headline text-2xl">{category.title}</CardTitle>
             </CardHeader>
             <CardContent>
-              <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>Ver lista ({category.items.length})</AccordionTrigger>
-                  <AccordionContent>
-                    <ul className="space-y-2 pt-2">
-                      {category.items.map((item) => (
-                        <li key={item} className="flex items-center gap-2">
-                          <Check className="h-4 w-4 text-accent" />
-                          <span className="text-muted-foreground">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <div className="flex flex-col gap-2">
+                {category.items.map((item) => (
+                    <Dialog key={item}>
+                        <DialogTrigger asChild>
+                            <Button variant="outline" className="justify-start text-left">{item}</Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                            <DialogHeader>
+                            <DialogTitle className="font-headline text-2xl text-primary">{item}</DialogTitle>
+                            <DialogDescription className="pt-4 text-base">
+                                Aqui virá a descrição detalhada sobre a prática de {item}. 
+                                Este texto poderá ser editado futuramente para fornecer mais informações aos visitantes do site.
+                            </DialogDescription>
+                            </DialogHeader>
+                        </DialogContent>
+                    </Dialog>
+                ))}
+              </div>
             </CardContent>
           </Card>
         ))}
