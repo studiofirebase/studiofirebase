@@ -21,7 +21,7 @@ const GoogleIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const PayPalIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" {...props}>
-        <path d="M16.48 4.24c-.23-.02-.47.01-.7.09-.45.16-.83.48-1.03.93l-2.34 9.47c-.08.33-.42.56-.76.56h-2.2c-.38 0-.7-.26-.78-.63l-.77-3.93-.01.01c-.1-.47-.47-.8-1-.87-.41-.05-.8.14-1.03.48l-1.35 1.9c-.19.26-.5.4-.81.4H2.4c-.38 0-.68-.28-.75-.66L1.2 9.5c-.05-.3.08-.6.31-.79.23-.19.53-.26.81-.19L3.8 9c.43.12.78.44.9.88l.65 2.52c.08.32.4.54.74.54h.47c.36 0 .68-.24.76-.59l2.33-9.43c.1-.42.45-.73.89-.73h2.32c.42 0 .79.28 1 .68l.65 2.45c.18.68.83 1.13 1.55 1.13h.8c.4 0 .75.28.84.67l.38 1.63c.09.37.45.62.83.62h.43c.32 0 .6-.2.7-.49l.79-3.4c.1-.42.47-.72.9-.72h.4c.37 0 .68.27.75.64l.01.06c.11.49-.19.99-.68 1.1l-2.43.56c-.72.17-1.24.78-1.24 1.52v.02c0 .48.33.9.79 1.02l2.3.6c.72.18 1.45.69 1.68 1.42l.02.04c.15.52-.14 1.07-.65 1.25-.33.12-.7.11-1.02.01-.45-.16-.83-.48-1.03-.93l-2.34-9.47c-.08-.33-.42-.56-.76-.56h-2.2c-.32 0-.6.2-.7.49l-.65-2.45c-.09-.34-.39-.58-.74-.58h-.81c-.79 0-1.48.53-1.69 1.29l-2.33 9.43c-.1.42-.45.73-.89-.73h-.47c-.36 0-.68-.24-.76-.59l-.65-2.52c-.08-.32-.4-.54-.74-.54h-.4c-.45 0-.84.3-.95.73l-1.34 1.88c-.19.26-.5.4-.81.4H3.8c-.34 0-.63-.22-.72-.54l-.45-1.9c-.04-.15.02-.31.14-.42.12-.11.29-.14.44-.08l1.45.42c.75.21 1.48-.18 1.75-.89l.77-2.01c.1-.25.34-.42.61-.42h.47c.32 0 .6.2.7.49l.77 3.93c.07.37.39.63.77.63h2.2c.75 0 1.39-.52 1.53-1.26l2.34-9.47c.1-.42.45-.73.89-.73h2.2c.38 0 .7.26.78.63l.38-1.63c.09-.37.45-.62.83-.62h.43c.79 0 1.48-.53 1.69-1.29l.79-3.4c.1-.42.47-.72.9-.72h.4c.75 0 1.38.52 1.52 1.25l.01.06c.11.49-.19.99-.68 1.1l-2.43.56c-.72.17-1.24.78-1.24 1.52v.02c0 .48.33.9.79 1.02l2.3.6c.72.18 1.45.69 1.68 1.42l.02.04c.15.52-.14 1.07-.65 1.25z"/>
+        <path d="M16.48 4.24c-.23-.02-.47.01-.7.09-.45.16-.83.48-1.03.93l-2.34 9.47c-.08.33-.42.56-.76.56h-2.2c-.38 0-.7-.26-.78-.63l-.77-3.93-.01.01c-.1-.47-.47-.8-1-.87-.41-.05-.8.14-1.03.48l-1.35 1.9c-.19.26-.5.4-.81.4H2.4c-.38 0-.68-.28-.75-.66L1.2 9.5c-.05-.3.08-.6.31-.79.23-.19.53-.26.81-.19L3.8 9c.43.12.78.44.9.88l.65 2.52c.08.32.4.54.74.54h.47c.36 0 .68-.24.76-.59l2.33-9.43c.1-.42.45-.73.89-.73h2.32c.42 0 .79.28 1 .68l.65 2.45c.18.68.83 1.13 1.55 1.13h.8c.4 0 .75.28.84.67l.38 1.63c.09.37.45.62.83.62h.43c.32 0 .6-.2.7-.49l.79-3.4c.1-.42.47-.72.9-.72h.4c.37 0 .68.27.75.64l.01.06c.11.49-.19.99-.68 1.1l-2.43.56c-.72.17-1.24.78-1.24 1.52v.02c0 .48.33.9.79 1.02l2.3.6c.72.18 1.45.69 1.68 1.42l.02.04c.15.52-.14 1.07-.65 1.25-.33.12-.7.11-1.02.01-.45-.16-.83-.48-1.03-.93l-2.34-9.47c-.08-.33-.42-.56-.76-.56h-2.2c-.32 0-.6.2-.7.49l-.65-2.45c-.09-.34-.39-.58-.74-.58h-.81c-.79 0-1.48.53-1.69 1.29l-2.33 9.43c-.1.42-.45.73-.89-.73h-.47c-.36 0-.68-.24-.76-.59l-.65-2.52c-.08-.32-.4-.54-.74-.54h-.4c-.45 0-.84.3-.95.73l-1.34 1.88c-.19.26-.5.4-.81.4H3.8c-.34 0-.63-.22-.72-.54l-.45-1.9c-.04-.15.02-.31.14-.42.12-.11.29-.14.44-.08l1.45.42c.75.21 1.48-.18 1.75-.89l.77-2.01c.1-.25.34-.42.61-.42h.47c.32 0 .6.2.7.49l.77 3.93c.07.37.39.63.77.63h2.2c.75 0 1.39-.52 1.53-1.26l2.34-9.47c.1-.42.45-.73.89-.73h2.2c.38 0 .7.26.78.63l.38-1.63c.09-.37.45-.62.83-.62h.43c.79 0 1.48-.53 1.69 1.29l.79-3.4c.1-.42.47-.72.9-.72h.4c.75 0 1.38.52 1.52 1.25l.01.06c.11.49-.19.99-.68 1.1l-2.43.56c-.72.17-1.24.78-1.24 1.52v.02c0 .48.33.9.79 1.02l2.3.6c.72.18 1.45.69 1.68 1.42l.02.04c.15.52-.14 1.07-.65 1.25z"/>
     </svg>
 );
 
@@ -34,8 +34,16 @@ export default function Home() {
   useEffect(() => {
     // We only want this to run on the client after hydration
     // to avoid a server-client mismatch.
-    setIsAgeGateOpen(true);
+    const hasSeenAgeGate = sessionStorage.getItem("ageGateConfirmed");
+    if (!hasSeenAgeGate) {
+      setIsAgeGateOpen(true);
+    }
   }, []);
+
+  const handleAgeGateConfirm = () => {
+    sessionStorage.setItem("ageGateConfirmed", "true");
+    setIsAgeGateOpen(false);
+  }
 
   // Futuramente, estes valores virão do painel de administração
   const presentationText = "Este é o espaço para o seu texto de apresentação. Fale sobre sua plataforma, seus vídeos e o que os visitantes encontrarão aqui.";
@@ -54,7 +62,7 @@ export default function Home() {
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-              <Button onClick={() => setIsAgeGateOpen(false)}>Tenho mais de 18 e concordo</Button>
+              <Button onClick={handleAgeGateConfirm}>Tenho mais de 18 e concordo</Button>
           </div>
         </DialogContent>
       </Dialog>
@@ -79,10 +87,11 @@ export default function Home() {
                     <Button variant="outline" className="w-full"><Camera className="mr-2 h-5 w-5" /> Acessar com Face ID</Button>
                     <div>
                         <p className="text-sm text-muted-foreground mb-2">Pague com</p>
-                        <div className="grid grid-cols-3 gap-2">
-                            <Button variant="outline"><GoogleIcon className="mr-2 h-5 w-5" /> Google</Button>
-                            <Button variant="outline"><CreditCard className="mr-2 h-5 w-5" /> Pix</Button>
-                            <Button variant="outline"><Apple className="mr-2 h-5 w-5" /> Apple</Button>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                            <Button variant="outline"><GoogleIcon className="h-5 w-5" /> Google</Button>
+                            <Button variant="outline"><CreditCard className="h-5 w-5" /> Pix</Button>
+                            <Button variant="outline"><Apple className="h-5 w-5" /> Apple</Button>
+                            <Button variant="outline"><PayPalIcon className="h-5 w-5" /> PayPal</Button>
                         </div>
                     </div>
                 </div>
@@ -92,9 +101,6 @@ export default function Home() {
                     <span className="text-6xl font-bold text-primary">{price}</span>
                     <span className="text-lg text-muted-foreground ml-1">BRL</span>
                 </div>
-                 <div className="mt-4 w-full max-w-sm mx-auto">
-                    <Button variant="outline" className="w-full"><PayPalIcon className="mr-2 h-5 w-5" /> PayPal</Button>
-                 </div>
                 <div className="mt-4 w-full max-w-sm mx-auto flex justify-center">
                     <Dialog open={isLoginDialogOpen} onOpenChange={setIsLoginDialogOpen}>
                       <DialogTrigger asChild>
@@ -148,3 +154,5 @@ export default function Home() {
     </>
   );
 }
+
+    
