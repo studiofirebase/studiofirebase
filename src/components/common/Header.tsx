@@ -13,8 +13,11 @@ export function Header() {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const navLinks = [
-    { href: "/", label: "Início" },
-    { href: "/subscriptions", label: "Assinaturas" },
+    { href: "/", label: "Home" },
+    { href: "/#featured-content", label: "Cardápio" },
+    { href: "/videos", label: "Vídeos" },
+    { href: "/store", label: "Loja" },
+    { href: "/subscriptions", label: "Clube do Hambúrguer" },
   ];
 
   return (
@@ -59,7 +62,8 @@ export function Header() {
                 </div>
             </SheetContent>
           </Sheet>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="hidden items-center gap-2 md:flex">
+            <Menu className="h-6 w-6 text-primary" />
             <span className="font-headline text-xl font-bold text-primary">
               BurgerHub
             </span>
