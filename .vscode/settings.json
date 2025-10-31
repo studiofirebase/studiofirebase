@@ -1,0 +1,13 @@
+{
+    "IDX.agenticWorkspace": true,
+    "IDX.aI.showChatInEditorTab": true,
+    "gemini-cli.debug.logging.enabled": true,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".mule": true
+    }
+}

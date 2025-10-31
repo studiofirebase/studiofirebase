@@ -1,0 +1,38 @@
+{
+  "node": {
+    "b1eb9de20b5946615cdb3ad04754c0aca1a0fe9a": {
+      "workers": {
+        "app/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fitalosanta%2FDownloads%2Fdownload%20(3)%2Fsrc%2Fai%2Fflows%2Fcurrency-conversion-flow.ts%22%2C%5B%22convertCurrency%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/page": "action-browser"
+      }
+    },
+    "5c6f903d7b4eac4cbd469765fa968f9ee7cca711": {
+      "workers": {
+        "app/admin/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fitalosanta%2FDownloads%2Fdownload%20(3)%2Fsrc%2Fapp%2Fadmin%2Factions.ts%22%2C%5B%22getDashboardStats%22%2C%22invalidateStatsCache%22%2C%22getTopPages%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/admin/page": "action-browser"
+      }
+    },
+    "6567a1e5e90a139d13cb05c123c98352cacee33e": {
+      "workers": {
+        "app/admin/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fitalosanta%2FDownloads%2Fdownload%20(3)%2Fsrc%2Fapp%2Fadmin%2Factions.ts%22%2C%5B%22getDashboardStats%22%2C%22invalidateStatsCache%22%2C%22getTopPages%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/admin/page": "action-browser"
+      }
+    },
+    "8398171d3fedf4b75598a0817fc8246259f12416": {
+      "workers": {
+        "app/admin/page": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Fitalosanta%2FDownloads%2Fdownload%20(3)%2Fsrc%2Fapp%2Fadmin%2Factions.ts%22%2C%5B%22getDashboardStats%22%2C%22invalidateStatsCache%22%2C%22getTopPages%22%5D%5D%5D&__client_imported__=true!"
+      },
+      "layer": {
+        "app/admin/page": "action-browser"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "4v7G7Np+qy+ru846b6EaFci5CynZeHzlenEIMdZ2GI4="
+}
