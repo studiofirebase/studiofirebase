@@ -62,9 +62,11 @@ node_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
+*.env.*
 .env
 dataconnect
 .vscode
 .dataconnect
-.next
+.nextserviceAccountKey.json
+.env
+.env.developtment .env.docker .env.local. .env.private .env.production .env.public
