@@ -69,4 +69,4 @@ dataconnect
 .dataconnect
 .nextserviceAccountKey.json
 .env
-.env.developtment .env.docker .env.local. .env.private .env.production .env.public
+.env.developtment .env.docker .env.local. .env.private .env.production .env.publicservice-account-key.json
