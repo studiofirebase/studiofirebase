@@ -9,5 +9,6 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         ".mule": true
-    }
+    },
+    "github.copilot.nextEditSuggestions.enabled": true
 }
